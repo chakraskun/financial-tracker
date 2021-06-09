@@ -1,0 +1,49 @@
+doctype html
+html lang="en" 
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    base href="../../../../" /
+    meta charset="utf-8" /
+    title Login | UE
+    meta content=("Login page example") name="description" /
+    meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" /
+    link href="https://keenthemes.com/metronic" rel="canonical" /
+    link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" /
+    link href="https://d1nmrzy556ufv4.cloudfront.net/css/pages/login/classic/login-2.css" rel="stylesheet" type="text/css" /
+    link href="https://d1nmrzy556ufv4.cloudfront.net/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" /
+    link href="https://d1nmrzy556ufv4.cloudfront.net/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" /
+    link href="https://d1nmrzy556ufv4.cloudfront.net/css/style.bundle.css" rel="stylesheet" type="text/css" /
+    link href="https://d1nmrzy556ufv4.cloudfront.net/media/logos/favicon.ico" rel=("shortcut icon") /
+  body#kt_body.header-mobile-fixed.subheader-enabled.aside-enabled.aside-fixed.aside-secondary-enabled.page-loading
+    - if flash.present?
+      - flash.each do |type, message|
+        div class=("alert alert-notice alert-custom alert-light-#{type} fade show mb-5") role="alert" style="z-index:100;position:fixed;width:100%;top:0;" 
+          .alert-icon
+            - if type == "success"
+              i.flaticon2-accept
+            - else
+              i.flaticon-warning
+          .alert-text= message.to_s.html_safe
+          .alert-close
+            button.close aria-label="Close" data-dismiss="alert" type="button" 
+              span aria-hidden="true" 
+                i.ki.ki-close
+    .d-flex.flex-column.flex-root
+      #kt_login.login.login-2.login-signin-on.d-flex.flex-column.flex-lg-row.flex-column-fluid.bg-white
+        .login-aside.order-2.order-lg-1.d-flex.flex-column-fluid.flex-lg-row-auto.bgi-size-cover.bgi-no-repeat.p-7.p-lg-10
+          .d-flex.flex-row-fluid.flex-column.justify-content-between
+            = yield
+        .order-1.order-lg-2.flex-column-auto.flex-lg-row-fluid.d-flex.flex-column.p-7 style=("background-color:#34558b;") 
+          .d-flex.flex-column-fluid.flex-lg-center
+            .d-flex.flex-column.justify-content-center
+              h3.display-3.font-weight-bold.my-7.text-white Project Tracker
+              p.font-weight-bold.font-size-lg.text-white.opacity-80
+                | Track it like a truck
+    javascript:
+      | var HOST_URL = "http://localhost:3000";
+    javascript:
+      | var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#1BC5BD", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#6993FF", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#1BC5BD", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#E1E9FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };
+    script src="https://d1nmrzy556ufv4.cloudfront.net/plugins/global/plugins.bundle.js" 
+    script src="https://d1nmrzy556ufv4.cloudfront.net/plugins/custom/prismjs/prismjs.bundle.js" 
+    script src="https://d1nmrzy556ufv4.cloudfront.net/js/scripts.bundle.js" 
+    script src="https://d1nmrzy556ufv4.cloudfront.net/js/pages/custom/login/login-general.js" 

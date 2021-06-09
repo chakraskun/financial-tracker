@@ -1,0 +1,38 @@
+.d-flex.flex-column-fluid.flex-column.flex-center.mt-5.mt-lg-0
+  a.mb-15.text-center href="#" 
+    img.max-h-75px alt="" src="https://d1nmrzy556ufv4.cloudfront.net/media/logos/logo-letter-1.png" /
+  .login-form.login-signin
+    .text-center.mb-10.mb-lg-20
+      h2.font-weight-bold Sign In
+      p.text-muted.font-weight-bold Enter your username and password
+    = form_for :session, url: session_path, html: {class: 'form'} do |form|
+      .form-group.py-3.m-0
+        = form.email_field :email,
+          class: 'form-control h-auto border-0 px-0 placeholder-dark-75',
+          placeholder: 'Email',
+          autocomplete: 'off',
+          required: 1
+      .form-group.py-3.border-top.m-0
+        = form.password_field :password,
+          class: 'form-control h-auto border-0 px-0 placeholder-dark-75',
+          placeholder: 'Password',
+          required: 1
+      .form-group.d-flex.flex-wrap.justify-content-between.align-items-center.mt-3
+        .checkbox-inline
+        = link_to 'Forget Password?', new_password_path(), class: 'text-muted text-hover-primary font-weight-bold', id: 'kt_login_forgot'
+      .form-group.d-flex.flex-wrap.justify-content-between.align-items-center.mt-2
+        button.btn.btn-primary.font-weight-bold.px-9.py-4.my-3 type="submit"  Sign In
+  .login-form.login-forgot
+    .text-center.mb-10.mb-lg-20
+      h3 Forgotten Password ?
+      p.text-muted.font-weight-bold Enter your email to reset your password
+    = form_for :session, url: forget_password_path, html: { class: 'form', id: 'kt_login_forgot_form'} do |form|
+      .form-group.py-3.border-bottom.mb-10
+        = form.text_field :email, type: 'email',
+          class: 'form-control h-auto border-0 px-0 placeholder-dark-75',
+          placeholder: 'Email',
+          autocomplet: 'off'
+      .form-group.d-flex.flex-wrap.flex-center
+        button.btn.btn-primary.font-weight-bold.px-9.py-4.my-3.mx-2 type="submit"  Submit
+        button.btn.btn-light-primary.font-weight-bold.px-9.py-4.my-3.mx-2 Cancel
+        = link_to 'Cancel', sign_in_path, class: 'btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-2'

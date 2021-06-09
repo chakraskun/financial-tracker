@@ -1,0 +1,18 @@
+#kt_header.header.header-fixed[style="color:#FFF;"]
+  .container-fluid.d-flex.align-items-stretch.justify-content-between
+    #kt_header_menu_wrapper.header-menu-wrapper.header-menu-wrapper-left
+      #kt_header_menu.header-menu.header-menu-mobile.header-menu-layout-default
+        ul.menu-nav
+          li.menu-item
+            span.text-dark.font-weight-boldest.font-size-h4.font-size-lg-h2
+              text style=("color:#c4240a;") USAHA EXPRESS
+    .topbar
+      .topbar-item
+        #kt_quick_user_toggle.btn.btn-icon.btn-icon-mobile.w-auto.btn-clean.d-flex.align-items-center.btn-lg.px-2
+          span.text-muted.font-weight-bold.font-size-base.d-none.d-md-inline.mr-1
+            | Hello,
+          span.text-dark-50.font-weight-bolder.font-size-base.d-none.d-md-inline.mr-3
+            = current_user.present? ? current_user.name : 'User'
+          span.symbol.symbol-lg-35.symbol-25.symbol-light-success
+            span.symbol-label.font-size-h5.font-weight-bold
+              = current_user.present? ? current_user.name.chars.first : 'U'

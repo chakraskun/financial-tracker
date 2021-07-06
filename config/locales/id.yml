@@ -1,0 +1,19 @@
+id:
+  hello: "Hello world"
+
+  fulfilled: 'dipenuhi'
+  closed: 'tidak dapat dipenuhi'
+  ongoing: 'proses berjalan'
+  approval_process: 'proses persetujuan'
+
+  waiting: menunggu
+  accepted: disetujui
+  rejected: ditolak
+
+  repository: gudang
+  production: produksi
+
+  InquiryLetter: 'SPB'
+  LetterDeliveryFinishedGood: 'Surat Penyerahan Barang Jadi'
+  PurchaseOrder: 'PurchaseOrder'
+  GoodsGiving: 'Pindah Gudang'

@@ -22,14 +22,11 @@ gem 'clearance'
 gem 'kaminari'
 gem 'rolify'
 gem 'faker'
+gem 'fast_jsonapi'
 
 #pdf
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-
-#worker
-gem 'sidekiq'
-gem 'sidekiq-scheduler'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 

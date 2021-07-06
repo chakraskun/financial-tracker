@@ -18,6 +18,18 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
+  namespace :admin do
+    resources :projects
+  end
+
+  namespace :api do
+    namespace :admin do
+      namespace :projects do
+        post 'get-all', to: 'index#show', as: :index
+      end
+    end
+  end
+
   get '/forget_password', to: 'passwords#forget_password', as: 'new_forget_password'
   post '/forget_password', to: 'passwords#create_forget_password', as: 'forget_password'
 

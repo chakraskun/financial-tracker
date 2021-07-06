@@ -1,0 +1,109 @@
+#kt_content.content.d-flex.flex-column.flex-column-fluid
+  #kt_subheader.subheader.py-2.py-lg-4.subheader-solid
+    .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
+      .d-flex.align-items-center.flex-wrap.mr-2
+        h5.text-dark.font-weight-bold.mt-2.mb-2.mr-2 Shipment
+
+  .d-flex.flex-column-fluid
+    .container
+      .card.card-custom
+        .card-header
+          .card-title
+            span.card-icon
+              i.flaticon2-favourite.text-primary
+            h3.card-label Shipment List
+
+          .card-toolbar
+            / .row.d-flex.justify-content-center
+            /   a.btn.btn-success.font-weight-bolder.mr-2.my-1[
+            /     href="#{new_admin_master_shipment_path}"
+            /   ]
+            /     i.flaticon2-document
+            /     | Create Master Shipment
+
+            /   button.btn.btn-primary.font-weight-bolder.mr-2.my-1[
+            /     data-target="#add"
+            /     data-toggle="modal"
+            /     type="button"
+            /   ]
+            /     i.la.la-plus
+            /     | Create New Shipment
+            /   = render "add_shipment", shipment: @new_shipment
+
+            /   = form_with url: admin_exports_download_index_shipments_path(format: :pdf),
+            /       class:'btn btn-danger font-weight-bolder mr-2 my-1', method: :post, local:1,
+            /       data: {\
+            /         controller: 'admin--shared--exports--data',\
+            /         action: 'submit->admin--shared--exports--data#submit',\
+            /         'admin--shared--exports--data-input-selectors': '#kt_datatable_search_query:search,#kt_datatable_search_destination_type:destination_type,#kt_datatable_search_shipper_name:shipper_name,#kt_dashboard_daterangepicker_custom:daterange'\
+            /       } do
+            /     button.btn.btn-danger.font-weight-bolder[
+            /       type="submit"
+            /       style="background-color:transparent;border:none;text-align:left;padding:0;"
+            /     ]
+            /       i.fas.fa-file-pdf
+            /       | Export PDF
+
+        .card-body
+          / .row.d-flex.justify-content-center
+          /   .col-lg-3.col-md-3.my-2.my-md-0
+          /     .d-flex.align-items-center
+          /       label.mr-3.mb-0.d-none.d-md-block
+          /         | Shipper:
+          /       select#kt_datatable_search_shipper_name.form-control[
+          /         name="shipper_name"
+          /         data-controller="select2"
+          /       ]
+          /         option[value="all"]
+          /           | All
+          /         - Shipper.where(branch_id: current_user.branch_id).pluck(:id).each do |shipper_id|
+          /           option[value="#{shipper_id}"]
+          /             = Shipper.find_by(id: shipper_id).name
+          /   .col-lg-3.col-md-3.my-2.my-md-0
+          /     .d-flex.align-items-center
+          /       label.mr-3.mb-0.d-none.d-md-block
+          /         | Shipment Type:
+          /       select#kt_datatable_search_destination_type.form-control[
+          /         name="destination_type"
+          /         data-controller="select2"
+          /       ]
+          /         option[value="all"]
+          /           | All
+          /         - Shipment.pluck(:shipment_destination_type).uniq.each do |destination_type|
+          /           option[value="#{destination_type}"] = destination_type
+          /   .col-lg-3.col-md-4.my-2.my-md-0
+          /     .d-flex.align-items-center
+          /       label.mr-3.mb-0.d-none.d-md-block Shipment Created:
+          /       .d-flex.align-items-center[
+          /         data-controller="picker--daterange-v2"
+          /         data-picker--daterange-v2-prevent-default=1
+          /       ]
+          /         a#kt_dashboard_daterangepicker_custom.btn.btn-sm.btn-light.font-weight-bold.mr-2[
+          /           href="javascript:void(0)"
+          /           data-placement="left"
+          /           data-toggle="tooltip"
+          /           title="Select Date Range"
+          /           data-start-date="#{params[:start_date] || @start_date}"
+          /           data-end-date="#{params[:end_date] || @end_date}"
+          /         ]
+          /           span#kt_dashboard_daterangepicker_title_custom.text-muted.font-size-base.font-weight-bold.mr-2 Today
+          /           span#kt_dashboard_daterangepicker_date_custom.text-primary.font-size-base.font-weight-bolder Aug 6
+          /   .col-lg-3.col-md-2.my-2.my-md-0
+          /     .d-flex.align-items-center
+          /       .input-group.input-group-sm.input-group-solid
+          /         input#kt_datatable_search_query.form-control placeholder="Search..." type="text" /
+          /         .input-group-append
+          /           span.input-group-text
+          /             span.navi-icon
+          /               i.fas.fa-search
+
+          .card-body
+          css:
+            .datatable.datatable-default.datatable-loaded > .datatable-table {
+              overflow-x: scroll;
+              width: 100%;
+            }
+          #kt_datatable.datatable.datatable-bordered.datatable-head-custom[
+            data-admin--projects--index-data-path=("#{api_admin_projects_index_path}")
+            data-controller="admin--projects--index"
+          ]

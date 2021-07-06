@@ -1,8 +1,8 @@
 #kt_aside.aside.aside-left.aside-fixed.d-flex.flex-column.flex-row-auto
   #kt_brand.brand.flex-column-auto
     a.brand-logo.d-block href="/" 
-      = image_tag 'logo/ue_transparent.png', class: "w-30px mr-3", alt: "logo"
-      = image_tag 'logo/ue_landscape.png', style: 'width:140px;', alt: "logo-text"
+      / = image_tag 'logo/ue_transparent.png', class: "w-30px mr-3", alt: "logo"
+      / = image_tag 'logo/ue_landscape.png', style: 'width:140px;', alt: "logo-text"
     button#kt_aside_toggle.brand-toggle.btn.btn-sm.px-0
       span.svg-icon.svg-icon.svg-icon-xl
         svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
@@ -13,77 +13,77 @@
   #kt_aside_menu_wrapper.aside-menu-wrapper.flex-column-fluid
     #kt_aside_menu.aside-menu.my-4 data-menu-dropdown-timeout="500" data-menu-scroll="1" data-menu-vertical="1" 
       ul.menu-nav
-        li.d-none[
-          aria-haspopup="true"
-          class=("menu-item #{'menu-item-active' if current_page?(admin_root_path())}")
-        ]
-          a.menu-link href="#{admin_root_path}"
-            span.svg-icon.menu-icon
-              svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-                g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
-                  polygon points=("0 0 24 0 24 24 0 24") 
-                  path d="M12.9336061,16.072447 L19.36,10.9564761 L19.5181585,10.8312381 C20.1676248,10.3169571 20.2772143,9.3735535 19.7629333,8.72408713 C19.6917232,8.63415859 19.6104327,8.55269514 19.5206557,8.48129411 L12.9336854,3.24257445 C12.3871201,2.80788259 11.6128799,2.80788259 11.0663146,3.24257445 L4.47482784,8.48488609 C3.82645598,9.00054628 3.71887192,9.94418071 4.23453211,10.5925526 C4.30500305,10.6811601 4.38527899,10.7615046 4.47382636,10.8320511 L4.63,10.9564761 L11.0659024,16.0730648 C11.6126744,16.5077525 12.3871218,16.5074963 12.9336061,16.072447 Z" fill="#000000" fill-rule="nonzero" 
-                  path d="M11.0563554,18.6706981 L5.33593024,14.122919 C4.94553994,13.8125559 4.37746707,13.8774308 4.06710397,14.2678211 C4.06471678,14.2708238 4.06234874,14.2738418 4.06,14.2768747 L4.06,14.2768747 C3.75257288,14.6738539 3.82516916,15.244888 4.22214834,15.5523151 C4.22358765,15.5534297 4.2250303,15.55454 4.22647627,15.555646 L11.0872776,20.8031356 C11.6250734,21.2144692 12.371757,21.2145375 12.909628,20.8033023 L19.7677785,15.559828 C20.1693192,15.2528257 20.2459576,14.6784381 19.9389553,14.2768974 C19.9376429,14.2751809 19.9363245,14.2734691 19.935,14.2717619 L19.935,14.2717619 C19.6266937,13.8743807 19.0546209,13.8021712 18.6572397,14.1104775 C18.654352,14.112718 18.6514778,14.1149757 18.6486172,14.1172508 L12.9235044,18.6705218 C12.377022,19.1051477 11.6029199,19.1052208 11.0563554,18.6706981 Z" fill="#000000" opacity="0.3" 
-            span.menu-text Dashboard
+        / li.d-none[
+        /   aria-haspopup="true"
+        /   class=("menu-item #{'menu-item-active' if current_page?(admin_root_path())}")
+        / ]
+        /   a.menu-link href="#{admin_root_path}"
+        /     span.svg-icon.menu-icon
+        /       svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+        /         g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
+        /           polygon points=("0 0 24 0 24 24 0 24") 
+        /           path d="M12.9336061,16.072447 L19.36,10.9564761 L19.5181585,10.8312381 C20.1676248,10.3169571 20.2772143,9.3735535 19.7629333,8.72408713 C19.6917232,8.63415859 19.6104327,8.55269514 19.5206557,8.48129411 L12.9336854,3.24257445 C12.3871201,2.80788259 11.6128799,2.80788259 11.0663146,3.24257445 L4.47482784,8.48488609 C3.82645598,9.00054628 3.71887192,9.94418071 4.23453211,10.5925526 C4.30500305,10.6811601 4.38527899,10.7615046 4.47382636,10.8320511 L4.63,10.9564761 L11.0659024,16.0730648 C11.6126744,16.5077525 12.3871218,16.5074963 12.9336061,16.072447 Z" fill="#000000" fill-rule="nonzero" 
+        /           path d="M11.0563554,18.6706981 L5.33593024,14.122919 C4.94553994,13.8125559 4.37746707,13.8774308 4.06710397,14.2678211 C4.06471678,14.2708238 4.06234874,14.2738418 4.06,14.2768747 L4.06,14.2768747 C3.75257288,14.6738539 3.82516916,15.244888 4.22214834,15.5523151 C4.22358765,15.5534297 4.2250303,15.55454 4.22647627,15.555646 L11.0872776,20.8031356 C11.6250734,21.2144692 12.371757,21.2145375 12.909628,20.8033023 L19.7677785,15.559828 C20.1693192,15.2528257 20.2459576,14.6784381 19.9389553,14.2768974 C19.9376429,14.2751809 19.9363245,14.2734691 19.935,14.2717619 L19.935,14.2717619 C19.6266937,13.8743807 19.0546209,13.8021712 18.6572397,14.1104775 C18.654352,14.112718 18.6514778,14.1149757 18.6486172,14.1172508 L12.9235044,18.6705218 C12.377022,19.1051477 11.6029199,19.1052208 11.0563554,18.6706981 Z" fill="#000000" opacity="0.3" 
+        /     span.menu-text Dashboard
         li.menu-section
           h4.menu-text Menu
           i.menu-icon.ki.ki-bold-more-hor.icon-md
 
         // menu for admin
-        - if current_user.has_role?(:admin)
-          li.d-none[
-            aria-haspopup="true"
-            class=("menu-item menu-item-submenu #{'menu-item-active' if request.original_fullpath.match(/^\/admin\/master_shipments\/?/)}")
-            data-menu-toggle="hover"
-          ]
-            a.menu-link href=admin_master_shipments_path()
-              span.svg-icon.menu-icon
-                svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-                  g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
-                    rect height="24" width="24" x="0" y="0" 
-                    path d="M18.1446364,11.84388 L17.4471627,16.0287218 C17.4463569,16.0335568 17.4455155,16.0383857 17.4446387,16.0432083 C17.345843,16.5865846 16.8252597,16.9469884 16.2818833,16.8481927 L4.91303792,14.7811299 C4.53842737,14.7130189 4.23500006,14.4380834 4.13039941,14.0719812 L2.30560137,7.68518803 C2.28007524,7.59584656 2.26712532,7.50338343 2.26712532,7.4104669 C2.26712532,6.85818215 2.71484057,6.4104669 3.26712532,6.4104669 L16.9929851,6.4104669 L17.606173,3.78251876 C17.7307772,3.24850086 18.2068633,2.87071314 18.7552257,2.87071314 L20.8200821,2.87071314 C21.4717328,2.87071314 22,3.39898039 22,4.05063106 C22,4.70228173 21.4717328,5.23054898 20.8200821,5.23054898 L19.6915238,5.23054898 L18.1446364,11.84388 Z" fill="#000000" opacity="0.3"
-                    path d="M6.5,21 C5.67157288,21 5,20.3284271 5,19.5 C5,18.6715729 5.67157288,18 6.5,18 C7.32842712,18 8,18.6715729 8,19.5 C8,20.3284271 7.32842712,21 6.5,21 Z M15.5,21 C14.6715729,21 14,20.3284271 14,19.5 C14,18.6715729 14.6715729,18 15.5,18 C16.3284271,18 17,18.6715729 17,19.5 C17,20.3284271 16.3284271,21 15.5,21 Z" fill="#000000"
-              span.menu-text Master Receipt
-          li[
-            aria-haspopup="true"
-            class=("menu-item menu-item-submenu #{'menu-item-active' if request.original_fullpath.match(/^\/admin\/shipments\/?/)}")
-            data-menu-toggle="hover"
-          ]
-            a.menu-link href=admin_shipments_path() 
-              span.svg-icon.menu-icon
-                svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-                  g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
-                    rect height="24" width="24" x="0" y="0" 
-                    path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000"
-                    path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3"
-              span.menu-text Shipment
-          li[
-            aria-haspopup="true"
-            class=("menu-item menu-item-submenu #{'menu-item-active' if request.original_fullpath.match(/^\/admin\/shippers\/?/)}")
-            data-menu-toggle="hover"
-          ]
-            a.menu-link href=admin_shippers_path() 
-              span.svg-icon.menu-icon
-                svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-                  g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
-                    rect height="24" width="24" x="0" y="0" 
-                    rect fill="#000000" opacity="0.3" x="2" y="5" width="20" height="14" rx="2"
-                    rect fill="#000000" x="2" y="8" width="20" height="3"
-                    rect fill="#000000" opacity="0.3" x="16" y="14" width="4" height="2" rx="1"
-              span.menu-text Client Credit
+        - if current_user.has_all_roles?
+        /   li.d-none[
+        /     aria-haspopup="true"
+        /     class=("menu-item menu-item-submenu #{'menu-item-active' if request.original_fullpath.match(/^\/admin\/master_shipments\/?/)}")
+        /     data-menu-toggle="hover"
+        /   ]
+        /     a.menu-link href=admin_master_shipments_path()
+        /       span.svg-icon.menu-icon
+        /         svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+        /           g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"
+        /             rect height="24" width="24" x="0" y="0" 
+        /             path d="M18.1446364,11.84388 L17.4471627,16.0287218 C17.4463569,16.0335568 17.4455155,16.0383857 17.4446387,16.0432083 C17.345843,16.5865846 16.8252597,16.9469884 16.2818833,16.8481927 L4.91303792,14.7811299 C4.53842737,14.7130189 4.23500006,14.4380834 4.13039941,14.0719812 L2.30560137,7.68518803 C2.28007524,7.59584656 2.26712532,7.50338343 2.26712532,7.4104669 C2.26712532,6.85818215 2.71484057,6.4104669 3.26712532,6.4104669 L16.9929851,6.4104669 L17.606173,3.78251876 C17.7307772,3.24850086 18.2068633,2.87071314 18.7552257,2.87071314 L20.8200821,2.87071314 C21.4717328,2.87071314 22,3.39898039 22,4.05063106 C22,4.70228173 21.4717328,5.23054898 20.8200821,5.23054898 L19.6915238,5.23054898 L18.1446364,11.84388 Z" fill="#000000" opacity="0.3"
+        /             path d="M6.5,21 C5.67157288,21 5,20.3284271 5,19.5 C5,18.6715729 5.67157288,18 6.5,18 C7.32842712,18 8,18.6715729 8,19.5 C8,20.3284271 7.32842712,21 6.5,21 Z M15.5,21 C14.6715729,21 14,20.3284271 14,19.5 C14,18.6715729 14.6715729,18 15.5,18 C16.3284271,18 17,18.6715729 17,19.5 C17,20.3284271 16.3284271,21 15.5,21 Z" fill="#000000"
+        /       span.menu-text Master Receipt
+        /   li[
+        /     aria-haspopup="true"
+        /     class=("menu-item menu-item-submenu #{'menu-item-active' if request.original_fullpath.match(/^\/admin\/shipments\/?/)}")
+        /     data-menu-toggle="hover"
+        /   ]
+        /     a.menu-link href=admin_shipments_path() 
+        /       span.svg-icon.menu-icon
+        /         svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+        /           g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
+        /             rect height="24" width="24" x="0" y="0" 
+        /             path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000"
+        /             path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3"
+        /       span.menu-text Shipment
+        /   li[
+        /     aria-haspopup="true"
+        /     class=("menu-item menu-item-submenu #{'menu-item-active' if request.original_fullpath.match(/^\/admin\/shippers\/?/)}")
+        /     data-menu-toggle="hover"
+        /   ]
+        /     a.menu-link href=admin_shippers_path() 
+        /       span.svg-icon.menu-icon
+        /         svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+        /           g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
+        /             rect height="24" width="24" x="0" y="0" 
+        /             rect fill="#000000" opacity="0.3" x="2" y="5" width="20" height="14" rx="2"
+        /             rect fill="#000000" x="2" y="8" width="20" height="3"
+        /             rect fill="#000000" opacity="0.3" x="16" y="14" width="4" height="2" rx="1"
+        /       span.menu-text Client Credit
 
-        // menu for admin
-        - if current_user.has_role?(:courier)
-          li[
-            aria-haspopup="true"
-            class=("menu-item menu-item-submenu #{'menu-item-active' if request.original_fullpath.match(/^\/courier\/shipments\/?/)}")
-            data-menu-toggle="hover"
-          ]
-            a.menu-link href=courier_shipments_path() 
-              span.svg-icon.menu-icon
-                svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-                  g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
-                    rect height="24" width="24" x="0" y="0" 
-                    path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000"
-                    path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3"
-              span.menu-text Shipment
+        / // menu for admin
+        / - if current_user.has_role?(:courier)
+        /   li[
+        /     aria-haspopup="true"
+        /     class=("menu-item menu-item-submenu #{'menu-item-active' if request.original_fullpath.match(/^\/courier\/shipments\/?/)}")
+        /     data-menu-toggle="hover"
+        /   ]
+        /     a.menu-link href=courier_shipments_path() 
+        /       span.svg-icon.menu-icon
+        /         svg height="24px" version="1.1" viewbox=("0 0 24 24") width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+        /           g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1" 
+        /             rect height="24" width="24" x="0" y="0" 
+        /             path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000"
+        /             path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3"
+        /       span.menu-text Shipment

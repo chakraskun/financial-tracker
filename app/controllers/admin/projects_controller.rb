@@ -6,8 +6,8 @@ module Admin
 
     def index
       @new_project = Project.new
-      @start_date = Project.order(date: :asc).first.date.localtime.strftime('%d/%m/%Y')
-      @end_date = Project.order(date: :desc).first.date.localtime.strftime('%d/%m/%Y')
+      # @start_date = Project.order(date: :asc).first.date.localtime.strftime('%d/%m/%Y')
+      # @end_date = Project.order(date: :desc).first.date.localtime.strftime('%d/%m/%Y')
     end
 
     def show; end

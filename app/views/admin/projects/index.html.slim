@@ -1,109 +1,581 @@
-#kt_content.content.d-flex.flex-column.flex-column-fluid
-  #kt_subheader.subheader.py-2.py-lg-4.subheader-solid
-    .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
-      .d-flex.align-items-center.flex-wrap.mr-2
-        h5.text-dark.font-weight-bold.mt-2.mb-2.mr-2 Project
-
-  .d-flex.flex-column-fluid
-    .container
-      .card.card-custom
-        .card-header
-          .card-title
-            span.card-icon
-              i.flaticon2-favourite.text-primary
-            h3.card-label Index Project
-
-          .card-toolbar
-            / .row.d-flex.justify-content-center
-            /   a.btn.btn-success.font-weight-bolder.mr-2.my-1[
-            /     href="#{new_admin_master_shipment_path}"
-            /   ]
-            /     i.flaticon2-document
-            /     | Create Master Shipment
-
-            /   button.btn.btn-primary.font-weight-bolder.mr-2.my-1[
-            /     data-target="#add"
-            /     data-toggle="modal"
-            /     type="button"
-            /   ]
-            /     i.la.la-plus
-            /     | Create New Shipment
-            /   = render "add_shipment", shipment: @new_shipment
-
-            /   = form_with url: admin_exports_download_index_shipments_path(format: :pdf),
-            /       class:'btn btn-danger font-weight-bolder mr-2 my-1', method: :post, local:1,
-            /       data: {\
-            /         controller: 'admin--shared--exports--data',\
-            /         action: 'submit->admin--shared--exports--data#submit',\
-            /         'admin--shared--exports--data-input-selectors': '#kt_datatable_search_query:search,#kt_datatable_search_destination_type:destination_type,#kt_datatable_search_shipper_name:shipper_name,#kt_dashboard_daterangepicker_custom:daterange'\
-            /       } do
-            /     button.btn.btn-danger.font-weight-bolder[
-            /       type="submit"
-            /       style="background-color:transparent;border:none;text-align:left;padding:0;"
-            /     ]
-            /       i.fas.fa-file-pdf
-            /       | Export PDF
-
-        .card-body
-          / .row.d-flex.justify-content-center
-          /   .col-lg-3.col-md-3.my-2.my-md-0
-          /     .d-flex.align-items-center
-          /       label.mr-3.mb-0.d-none.d-md-block
-          /         | Shipper:
-          /       select#kt_datatable_search_shipper_name.form-control[
-          /         name="shipper_name"
-          /         data-controller="select2"
-          /       ]
-          /         option[value="all"]
-          /           | All
-          /         - Shipper.where(branch_id: current_user.branch_id).pluck(:id).each do |shipper_id|
-          /           option[value="#{shipper_id}"]
-          /             = Shipper.find_by(id: shipper_id).name
-          /   .col-lg-3.col-md-3.my-2.my-md-0
-          /     .d-flex.align-items-center
-          /       label.mr-3.mb-0.d-none.d-md-block
-          /         | Shipment Type:
-          /       select#kt_datatable_search_destination_type.form-control[
-          /         name="destination_type"
-          /         data-controller="select2"
-          /       ]
-          /         option[value="all"]
-          /           | All
-          /         - Shipment.pluck(:shipment_destination_type).uniq.each do |destination_type|
-          /           option[value="#{destination_type}"] = destination_type
-          /   .col-lg-3.col-md-4.my-2.my-md-0
-          /     .d-flex.align-items-center
-          /       label.mr-3.mb-0.d-none.d-md-block Shipment Created:
-          /       .d-flex.align-items-center[
-          /         data-controller="picker--daterange-v2"
-          /         data-picker--daterange-v2-prevent-default=1
-          /       ]
-          /         a#kt_dashboard_daterangepicker_custom.btn.btn-sm.btn-light.font-weight-bold.mr-2[
-          /           href="javascript:void(0)"
-          /           data-placement="left"
-          /           data-toggle="tooltip"
-          /           title="Select Date Range"
-          /           data-start-date="#{params[:start_date] || @start_date}"
-          /           data-end-date="#{params[:end_date] || @end_date}"
-          /         ]
-          /           span#kt_dashboard_daterangepicker_title_custom.text-muted.font-size-base.font-weight-bold.mr-2 Today
-          /           span#kt_dashboard_daterangepicker_date_custom.text-primary.font-size-base.font-weight-bolder Aug 6
-          /   .col-lg-3.col-md-2.my-2.my-md-0
-          /     .d-flex.align-items-center
-          /       .input-group.input-group-sm.input-group-solid
-          /         input#kt_datatable_search_query.form-control placeholder="Search..." type="text" /
-          /         .input-group-append
-          /           span.input-group-text
-          /             span.navi-icon
-          /               i.fas.fa-search
-
+content-body
+  section#dashboard-ecommerce
+    .row.match-height
+      .col-xl-4.col-md-6.col-12
+        .card.card-congratulation-medal
           .card-body
-          css:
-            .datatable.datatable-default.datatable-loaded > .datatable-table {
-              overflow-x: scroll;
-              width: 100%;
-            }
-          #kt_datatable.datatable.datatable-bordered.datatable-head-custom[
-            data-admin--projects--index-data-path=("#{api_admin_projects_index_path}")
-            data-controller="admin--projects--index"
-          ]
+            h5
+              | Congratulations 🎉 John!
+            p.card-text.font-small-3
+              | You have won gold medal
+            h3.mb-75.mt-2.pt-50
+              a[href="javascript:void(0);"]
+                | $48.9k
+            button.btn.btn-primary[type="button"]
+              | View Sales
+            img.congratulation-medal[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/illustration/badge.svg" alt="Medal Pic"]
+      .col-xl-8.col-md-6.col-12
+        .card.card-statistics
+          .card-header
+            h4.card-title
+              | Statistics
+            .d-flex.align-items-center
+              p.card-text.font-small-2.mr-25.mb-0
+                | Updated 1 month ago
+          .card-body.statistics-body
+            .row
+              .col-xl-3.col-sm-6.col-12.mb-2.mb-xl-0
+                .media
+                  .avatar.bg-light-primary.mr-2
+                    .avatar-content
+                      i.avatar-icon[data-feather="trending-up"]
+                  .media-body.my-auto
+                    h4.font-weight-bolder.mb-0
+                      | 230k
+                    p.card-text.font-small-3.mb-0
+                      | Sales
+              .col-xl-3.col-sm-6.col-12.mb-2.mb-xl-0
+                .media
+                  .avatar.bg-light-info.mr-2
+                    .avatar-content
+                      i.avatar-icon[data-feather="user"]
+                  .media-body.my-auto
+                    h4.font-weight-bolder.mb-0
+                      | 8.549k
+                    p.card-text.font-small-3.mb-0
+                      | Customers
+              .col-xl-3.col-sm-6.col-12.mb-2.mb-sm-0
+                .media
+                  .avatar.bg-light-danger.mr-2
+                    .avatar-content
+                      i.avatar-icon[data-feather="box"]
+                  .media-body.my-auto
+                    h4.font-weight-bolder.mb-0
+                      | 1.423k
+                    p.card-text.font-small-3.mb-0
+                      | Products
+              .col-xl-3.col-sm-6.col-12
+                .media
+                  .avatar.bg-light-success.mr-2
+                    .avatar-content
+                      i.avatar-icon[data-feather="dollar-sign"]
+                  .media-body.my-auto
+                    h4.font-weight-bolder.mb-0
+                      | $9745
+                    p.card-text.font-small-3.mb-0
+                      | Revenue
+    .row.match-height
+      .col-lg-4.col-12
+        .row.match-height
+          .col-lg-6.col-md-3.col-6
+            .card
+              .card-body.pb-50
+                h6
+                  | Orders
+                h2.font-weight-bolder.mb-1
+                  | 2,76k
+                #statistics-order-chart
+          .col-lg-6.col-md-3.col-6
+            .card.card-tiny-line-stats
+              .card-body.pb-50
+                h6
+                  | Profit
+                h2.font-weight-bolder.mb-1
+                  | 6,24k
+                #statistics-profit-chart
+          .col-lg-12.col-md-6.col-12
+            .card.earnings-card
+              .card-body
+                .row
+                  .col-6
+                    h4.card-title.mb-1
+                      | Earnings
+                    .font-small-2
+                      | This Month
+                    h5.mb-1
+                      | $4055.56
+                    p.card-text.text-muted.font-small-2
+                      span.font-weight-bolder
+                        | 68.2%
+                      span
+                        |  more earnings than last month.
+                  .col-6
+                    #earnings-chart
+      .col-lg-8.col-12
+        .card.card-revenue-budget
+          .row.mx-0
+            .col-md-8.col-12.revenue-report-wrapper
+              .d-sm-flex.justify-content-between.align-items-center.mb-3
+                h4.card-title.mb-50.mb-sm-0
+                  | Revenue Report
+                .d-flex.align-items-center
+                  .d-flex.align-items-center.mr-2
+                    span.bullet.bullet-primary.font-small-3.mr-50.cursor-pointer
+                    span
+                      | Earning
+                  .d-flex.align-items-center.ml-75
+                    span.bullet.bullet-warning.font-small-3.mr-50.cursor-pointer
+                    span
+                      | Expense
+              #revenue-report-chart
+            .col-md-4.col-12.budget-wrapper
+              .btn-group
+                button.btn.btn-outline-primary.btn-sm.dropdown-toggle.budget-dropdown[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+                  |  2020 
+                .dropdown-menu
+                  a.dropdown-item[href="javascript:void(0);"]
+                    | 2020
+                  a.dropdown-item[href="javascript:void(0);"]
+                    | 2019
+                  a.dropdown-item[href="javascript:void(0);"]
+                    | 2018
+              h2.mb-25
+                | $25,852
+              .d-flex.justify-content-center
+                span.font-weight-bolder.mr-25
+                  | Budget:
+                span
+                  | 56,800
+              #budget-chart
+              button.btn.btn-primary[type="button"]
+                | Increase Budget
+    .row.match-height
+      .col-lg-8.col-12
+        .card.card-company-table
+          .card-body.p-0
+            .table-responsive
+              table.table
+                thead
+                  tr
+                    th
+                      | Company
+                    th
+                      | Category
+                    th
+                      | Views
+                    th
+                      | Revenue
+                    th
+                      | Sales
+                tbody
+                  tr
+                    td
+                      .d-flex.align-items-center
+                        .avatar.rounded
+                          .avatar-content
+                            img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/icons/toolbox.svg" alt="Toolbar svg"]
+                        div
+                          .font-weight-bolder
+                            | Dixons
+                          .font-small-2.text-muted
+                            | meguc@ruj.io
+                    td
+                      .d-flex.align-items-center
+                        .avatar.bg-light-primary.mr-1
+                          .avatar-content
+                            i.font-medium-3[data-feather="monitor"]
+                        span
+                          | Technology
+                    td.text-nowrap
+                      .d-flex.flex-column
+                        span.font-weight-bolder.mb-25
+                          | 23.4k
+                        span.font-small-2.text-muted
+                          | in 24 hours
+                    td
+                      | $891.2
+                    td
+                      .d-flex.align-items-center
+                        span.font-weight-bolder.mr-1
+                          | 68%
+                        i.text-danger.font-medium-1[data-feather="trending-down"]
+                  tr
+                    td
+                      .d-flex.align-items-center
+                        .avatar.rounded
+                          .avatar-content
+                            img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/icons/parachute.svg" alt="Parachute svg"]
+                        div
+                          .font-weight-bolder
+                            | Motels
+                          .font-small-2.text-muted
+                            | vecav@hodzi.co.uk
+                    td
+                      .d-flex.align-items-center
+                        .avatar.bg-light-success.mr-1
+                          .avatar-content
+                            i.font-medium-3[data-feather="coffee"]
+                        span
+                          | Grocery
+                    td.text-nowrap
+                      .d-flex.flex-column
+                        span.font-weight-bolder.mb-25
+                          | 78k
+                        span.font-small-2.text-muted
+                          | in 2 days
+                    td
+                      | $668.51
+                    td
+                      .d-flex.align-items-center
+                        span.font-weight-bolder.mr-1
+                          | 97%
+                        i.text-success.font-medium-1[data-feather="trending-up"]
+                  tr
+                    td
+                      .d-flex.align-items-center
+                        .avatar.rounded
+                          .avatar-content
+                            img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/icons/brush.svg" alt="Brush svg"]
+                        div
+                          .font-weight-bolder
+                            | Zipcar
+                          .font-small-2.text-muted
+                            | davcilse@is.gov
+                    td
+                      .d-flex.align-items-center
+                        .avatar.bg-light-warning.mr-1
+                          .avatar-content
+                            i.font-medium-3[data-feather="watch"]
+                        span
+                          | Fashion
+                    td.text-nowrap
+                      .d-flex.flex-column
+                        span.font-weight-bolder.mb-25
+                          | 162
+                        span.font-small-2.text-muted
+                          | in 5 days
+                    td
+                      | $522.29
+                    td
+                      .d-flex.align-items-center
+                        span.font-weight-bolder.mr-1
+                          | 62%
+                        i.text-success.font-medium-1[data-feather="trending-up"]
+                  tr
+                    td
+                      .d-flex.align-items-center
+                        .avatar.rounded
+                          .avatar-content
+                            img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/icons/star.svg" alt="Star svg"]
+                        div
+                          .font-weight-bolder
+                            | Owning
+                          .font-small-2.text-muted
+                            | us@cuhil.gov
+                    td
+                      .d-flex.align-items-center
+                        .avatar.bg-light-primary.mr-1
+                          .avatar-content
+                            i.font-medium-3[data-feather="monitor"]
+                        span
+                          | Technology
+                    td.text-nowrap
+                      .d-flex.flex-column
+                        span.font-weight-bolder.mb-25
+                          | 214
+                        span.font-small-2.text-muted
+                          | in 24 hours
+                    td
+                      | $291.01
+                    td
+                      .d-flex.align-items-center
+                        span.font-weight-bolder.mr-1
+                          | 88%
+                        i.text-success.font-medium-1[data-feather="trending-up"]
+                  tr
+                    td
+                      .d-flex.align-items-center
+                        .avatar.rounded
+                          .avatar-content
+                            img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/icons/book.svg" alt="Book svg"]
+                        div
+                          .font-weight-bolder
+                            | Cafés
+                          .font-small-2.text-muted
+                            | pudais@jife.com
+                    td
+                      .d-flex.align-items-center
+                        .avatar.bg-light-success.mr-1
+                          .avatar-content
+                            i.font-medium-3[data-feather="coffee"]
+                        span
+                          | Grocery
+                    td.text-nowrap
+                      .d-flex.flex-column
+                        span.font-weight-bolder.mb-25
+                          | 208
+                        span.font-small-2.text-muted
+                          | in 1 week
+                    td
+                      | $783.93
+                    td
+                      .d-flex.align-items-center
+                        span.font-weight-bolder.mr-1
+                          | 16%
+                        i.text-danger.font-medium-1[data-feather="trending-down"]
+                  tr
+                    td
+                      .d-flex.align-items-center
+                        .avatar.rounded
+                          .avatar-content
+                            img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/icons/rocket.svg" alt="Rocket svg"]
+                        div
+                          .font-weight-bolder
+                            | Kmart
+                          .font-small-2.text-muted
+                            | bipri@cawiw.com
+                    td
+                      .d-flex.align-items-center
+                        .avatar.bg-light-warning.mr-1
+                          .avatar-content
+                            i.font-medium-3[data-feather="watch"]
+                        span
+                          | Fashion
+                    td.text-nowrap
+                      .d-flex.flex-column
+                        span.font-weight-bolder.mb-25
+                          | 990
+                        span.font-small-2.text-muted
+                          | in 1 month
+                    td
+                      | $780.05
+                    td
+                      .d-flex.align-items-center
+                        span.font-weight-bolder.mr-1
+                          | 78%
+                        i.text-success.font-medium-1[data-feather="trending-up"]
+                  tr
+                    td
+                      .d-flex.align-items-center
+                        .avatar.rounded
+                          .avatar-content
+                            img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/icons/speaker.svg" alt="Speaker svg"]
+                        div
+                          .font-weight-bolder
+                            | Payers
+                          .font-small-2.text-muted
+                            | luk@izug.io
+                    td
+                      .d-flex.align-items-center
+                        .avatar.bg-light-warning.mr-1
+                          .avatar-content
+                            i.font-medium-3[data-feather="watch"]
+                        span
+                          | Fashion
+                    td.text-nowrap
+                      .d-flex.flex-column
+                        span.font-weight-bolder.mb-25
+                          | 12.9k
+                        span.font-small-2.text-muted
+                          | in 12 hours
+                    td
+                      | $531.49
+                    td
+                      .d-flex.align-items-center
+                        span.font-weight-bolder.mr-1
+                          | 42%
+                        i.text-success.font-medium-1[data-feather="trending-up"]
+      .col-lg-4.col-md-6.col-12
+        .card.card-developer-meetup
+          .meetup-img-wrapper.rounded-top.text-center
+            img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/illustration/email.svg" alt="Meeting Pic" height="170"]
+          .card-body
+            .meetup-header.d-flex.align-items-center
+              .meetup-day
+                h6.mb-0
+                  | THU
+                h3.mb-0
+                  | 24
+              .my-auto
+                h4.card-title.mb-25
+                  | Developer Meetup
+                p.card-text.mb-0
+                  | Meet world popular developers
+            .media
+              .avatar.bg-light-primary.rounded.mr-1
+                .avatar-content
+                  i.avatar-icon.font-medium-3[data-feather="calendar"]
+              .media-body
+                h6.mb-0
+                  | Sat, May 25, 2020
+                small
+                  | 10:AM to 6:PM
+            .media.mt-2
+              .avatar.bg-light-primary.rounded.mr-1
+                .avatar-content
+                  i.avatar-icon.font-medium-3[data-feather="map-pin"]
+              .media-body
+                h6.mb-0
+                  | Central Park
+                small
+                  | Manhattan, New york City
+            .avatar-group
+              .avatar.pull-up[data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Billy Hopkins"]
+                img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/portrait/small/avatar-s-9.jpg" alt="Avatar" width="33" height="33"]
+              .avatar.pull-up[data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Amy Carson"]
+                img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/portrait/small/avatar-s-6.jpg" alt="Avatar" width="33" height="33"]
+              .avatar.pull-up[data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Brandon Miles"]
+                img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/portrait/small/avatar-s-8.jpg" alt="Avatar" width="33" height="33"]
+              .avatar.pull-up[data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Daisy Weber"]
+                img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/portrait/small/avatar-s-20.jpg" alt="Avatar" width="33" height="33"]
+              .avatar.pull-up[data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Jenny Looper"]
+                img[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/portrait/small/avatar-s-20.jpg" alt="Avatar" width="33" height="33"]
+              h6.align-self-center.cursor-pointer.ml-50.mb-0
+                | +42
+      .col-lg-4.col-md-6.col-12
+        .card.card-browser-states
+          .card-header
+            div
+              h4.card-title
+                | Browser States
+              p.card-text.font-small-2
+                | Counter August 2020
+            .dropdown.chart-dropdown
+              i.font-medium-3.cursor-pointer[data-feather="more-vertical" data-toggle="dropdown"]
+              .dropdown-menu.dropdown-menu-right
+                a.dropdown-item[href="javascript:void(0);"]
+                  | Last 28 Days
+                a.dropdown-item[href="javascript:void(0);"]
+                  | Last Month
+                a.dropdown-item[href="javascript:void(0);"]
+                  | Last Year
+          .card-body
+            .browser-states
+              .media
+                img.rounded.mr-1[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/icons/google-chrome.png" height="30" alt="Google Chrome"]
+                h6.align-self-center.mb-0
+                  | Google Chrome
+              .d-flex.align-items-center
+                .font-weight-bold.text-body-heading.mr-1
+                  | 54.4%
+                #browser-state-chart-primary
+            .browser-states
+              .media
+                img.rounded.mr-1[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/icons/mozila-firefox.png" height="30" alt="Mozila Firefox"]
+                h6.align-self-center.mb-0
+                  | Mozila Firefox
+              .d-flex.align-items-center
+                .font-weight-bold.text-body-heading.mr-1
+                  | 6.1%
+                #browser-state-chart-warning
+            .browser-states
+              .media
+                img.rounded.mr-1[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/icons/apple-safari.png" height="30" alt="Apple Safari"]
+                h6.align-self-center.mb-0
+                  | Apple Safari
+              .d-flex.align-items-center
+                .font-weight-bold.text-body-heading.mr-1
+                  | 14.6%
+                #browser-state-chart-secondary
+            .browser-states
+              .media
+                img.rounded.mr-1[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/icons/internet-explorer.png" height="30" alt="Internet Explorer"]
+                h6.align-self-center.mb-0
+                  | Internet Explorer
+              .d-flex.align-items-center
+                .font-weight-bold.text-body-heading.mr-1
+                  | 4.2%
+                #browser-state-chart-info
+            .browser-states
+              .media
+                img.rounded.mr-1[src="https://dapecfw4ej6c8.cloudfront.net/app-assets/images/icons/opera.png" height="30" alt="Opera Mini"]
+                h6.align-self-center.mb-0
+                  | Opera Mini
+              .d-flex.align-items-center
+                .font-weight-bold.text-body-heading.mr-1
+                  | 8.4%
+                #browser-state-chart-danger
+      .col-lg-4.col-md-6.col-12
+        .card
+          .card-header.d-flex.justify-content-between.align-items-center
+            h4.card-title
+              | Goal Overview
+            i.font-medium-3.text-muted.cursor-pointer[data-feather="help-circle"]
+          .card-body.p-0
+            #goal-overview-radial-bar-chart.my-2
+            .row.border-top.text-center.mx-0
+              .col-6.border-right.py-1
+                p.card-text.text-muted.mb-0
+                  | Completed
+                h3.font-weight-bolder.mb-0
+                  | 786,617
+              .col-6.py-1
+                p.card-text.text-muted.mb-0
+                  | In Progress
+                h3.font-weight-bolder.mb-0
+                  | 13,561
+      .col-lg-4.col-md-6.col-12
+        .card.card-transaction
+          .card-header
+            h4.card-title
+              | Transactions
+            .dropdown.chart-dropdown
+              i.font-medium-3.cursor-pointer[data-feather="more-vertical" data-toggle="dropdown"]
+              .dropdown-menu.dropdown-menu-right
+                a.dropdown-item[href="javascript:void(0);"]
+                  | Last 28 Days
+                a.dropdown-item[href="javascript:void(0);"]
+                  | Last Month
+                a.dropdown-item[href="javascript:void(0);"]
+                  | Last Year
+          .card-body
+            .transaction-item
+              .media
+                .avatar.bg-light-primary.rounded
+                  .avatar-content
+                    i.avatar-icon.font-medium-3[data-feather="pocket"]
+                .media-body
+                  h6.transaction-title
+                    | Wallet
+                  small
+                    | Starbucks
+              .font-weight-bolder.text-danger
+                | - $74
+            .transaction-item
+              .media
+                .avatar.bg-light-success.rounded
+                  .avatar-content
+                    i.avatar-icon.font-medium-3[data-feather="check"]
+                .media-body
+                  h6.transaction-title
+                    | Bank Transfer
+                  small
+                    | Add Money
+              .font-weight-bolder.text-success
+                | + $480
+            .transaction-item
+              .media
+                .avatar.bg-light-danger.rounded
+                  .avatar-content
+                    i.avatar-icon.font-medium-3[data-feather="dollar-sign"]
+                .media-body
+                  h6.transaction-title
+                    | Paypal
+                  small
+                    | Add Money
+              .font-weight-bolder.text-success
+                | + $590
+            .transaction-item
+              .media
+                .avatar.bg-light-warning.rounded
+                  .avatar-content
+                    i.avatar-icon.font-medium-3[data-feather="credit-card"]
+                .media-body
+                  h6.transaction-title
+                    | Mastercard
+                  small
+                    | Ordered Food
+              .font-weight-bolder.text-danger
+                | - $23
+            .transaction-item
+              .media
+                .avatar.bg-light-info.rounded
+                  .avatar-content
+                    i.avatar-icon.font-medium-3[data-feather="trending-up"]
+                .media-body
+                  h6.transaction-title
+                    | Transfer
+                  small
+                    | Refund
+              .font-weight-bolder.text-success
+                | + $98

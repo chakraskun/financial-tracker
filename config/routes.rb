@@ -19,12 +19,17 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root 'dashboards#index'
     resources :projects
+    resources :invoices
   end
 
   namespace :api do
     namespace :admin do
       namespace :projects do
+        post 'get-all', to: 'index#show', as: :index
+      end
+      namespace :invoices do
         post 'get-all', to: 'index#show', as: :index
       end
     end

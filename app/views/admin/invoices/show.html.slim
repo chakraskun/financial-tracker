@@ -1,0 +1,49 @@
+#kt_content.content.d-flex.flex-column.flex-column-fluid
+  #kt_subheader.subheader.py-2.py-lg-6.subheader-solid
+    .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
+      .d-flex.align-items-center.flex-wrap.mr-1
+        .d-flex.align-items-baseline.flex-wrap.mr-5
+          h5.text-dark.font-weight-bold.my-1.mr-5 Shipment
+          ul.breadcrumb.breadcrumb-transparent.breadcrumb-dot.font-weight-bold.p-0.my-2.font-size-sm
+            li.breadcrumb-item
+              a.text-muted href="#{admin_invoices_path}" Shipment List
+            li.breadcrumb-item
+              a.text-muted href="" Show
+
+  .d-flex.flex-column-fluid
+    .container-fluid
+      .row
+        .col-12
+          .card.card-custom.gutter-b
+            .card-body.py-4.card-block.row
+              .col-lg-8.col-md-8.col-6
+                h4 = @invoice.name
+                ul.list-inline.mb-1
+                  li.list-inline-item.mr-31
+                    i.flaticon2-pin.mr-1.text-dark-50
+                    text.text-sm.text-dark-50
+                      = @invoice.description
+                .pl-0
+                  .progress.progress-lg.progress-bar-shipment
+      .row
+        .col-xl-5.col-lg-6
+          .card.card-custom.gutter-b
+            .card-header.h-auto.py-4
+              .card-title
+                h3.card-label
+                  | Consignee
+            .card-body.py-4
+              .form-group.row.my-2
+                label.col-5.col-form-label Name:
+                .col-7.my-auto
+                  span.form-control-plaintext.font-weight-bolder
+                    = @invoice.name
+              .form-group.row.my-2
+                label.col-5.col-form-label Price
+                .col-7.my-auto
+                  span.form-control-plaintext.font-weight-bolder
+                    = @invoice.price&.format
+              .form-group.row.my-2
+                label.col-5.col-form-label Type
+                .col-7.my-auto
+                  = @invoice.invoice_type

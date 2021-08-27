@@ -2,7 +2,7 @@
   #kt_subheader.subheader.py-2.py-lg-4.subheader-solid
     .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
       .d-flex.align-items-center.flex-wrap.mr-2
-        h5.text-dark.font-weight-bold.mt-2.mb-2.mr-2 Project
+        h5.text-dark.font-weight-bold.mt-2.mb-2.mr-2 Invoice
 
   .d-flex.flex-column-fluid
     .container
@@ -11,24 +11,18 @@
           .card-title
             span.card-icon
               i.flaticon2-favourite.text-primary
-            h3.card-label Project List
+            h3.card-label Invoice List
 
           .card-toolbar
-            / .row.d-flex.justify-content-center
-            /   a.btn.btn-success.font-weight-bolder.mr-2.my-1[
-            /     href="#{new_admin_master_shipment_path}"
-            /   ]
-            /     i.flaticon2-document
-            /     | Create Master Shipment
-
-            /   button.btn.btn-primary.font-weight-bolder.mr-2.my-1[
-            /     data-target="#add"
-            /     data-toggle="modal"
-            /     type="button"
-            /   ]
-            /     i.la.la-plus
-            /     | Create New Shipment
-            /   = render "add_shipment", shipment: @new_shipment
+            .row.d-flex.justify-content-center
+              button.btn.btn-primary.font-weight-bolder.mr-2.my-1[
+                data-target="#add"
+                data-toggle="modal"
+                type="button"
+              ]
+                i.la.la-plus
+                | Create New Invoice
+              = render "add_invoice", invoice: @new_invoice
 
             /   = form_with url: admin_exports_download_index_shipments_path(format: :pdf),
             /       class:'btn btn-danger font-weight-bolder mr-2 my-1', method: :post, local:1,
@@ -44,7 +38,16 @@
             /       i.fas.fa-file-pdf
             /       | Export PDF
 
-        / .card-body
+        .card-body
+          css:
+            .datatable.datatable-default.datatable-loaded > .datatable-table {
+              overflow-x: scroll;
+              width: 100%;
+            }
+          #kt_datatable.datatable.datatable-bordered.datatable-head-custom[
+            data-admin--invoices--index-data-path=("#{api_admin_invoices_index_path}")
+            data-controller="admin--invoices--index"
+          ]
         /   .row.d-flex.justify-content-center
         /     .col-lg-3.col-md-3.my-2.my-md-0
         /       .d-flex.align-items-center
@@ -96,14 +99,3 @@
         /             span.input-group-text
         /               span.navi-icon
         /                 i.fas.fa-search
-
-          .card-body
-          css:
-            .datatable.datatable-default.datatable-loaded > .datatable-table {
-              overflow-x: scroll;
-              width: 100%;
-            }
-          #kt_datatable.datatable.datatable-bordered.datatable-head-custom[
-            data-admin--invoices--index-data-path=("#{api_admin_invoices_index_path}")
-            data-controller="admin--invoices--index"
-          ]

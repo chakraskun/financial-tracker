@@ -23,7 +23,7 @@ module Admin
         return redirect_to admin_invoices_path,
           alert: "Failed to create invoice, #{service.error_messages.to_sentence}"
       end
-      redirect_to admin_invoice_path(id: service.invoice.id), notice: "Invoice has been created"
+      redirect_to admin_invoices_path, notice: "Invoice has been created"
     end
 
     def destroy

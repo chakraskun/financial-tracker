@@ -1,7 +1,7 @@
 module Api
   module Admin
     module Invoices
-      class IndexController < Api::ApplicationController
+      class IndexExpenseController < Api::ApplicationController
         def show
           render json: result
         end
@@ -18,7 +18,7 @@ module Api
           return @invoices if @invoices.present?
 
           @invoices = Invoice
-            .all
+            .expense
             .order(date: :desc)            
           if sort.present?
             @invoices = @invoices
@@ -35,21 +35,6 @@ module Api
             @invoices = @invoices
               .search(query[:search])
           end
-          # if query.dig(:shipper_id).present? && query.dig(:shipper_id) != 'all'
-          #   @invoices = @invoices
-          #     .where(shipper_id: query[:shipper_id])
-          # end
-          # if query.dig(:destination_type).present? && query.dig(:destination_type) != 'all'
-          #   @invoices = @invoices
-          #     .where(shipment_destination_type: query[:destination_type])
-          # end
-          # if query.dig(:daterange).present?
-          #   daterange = query[:daterange].split(' - ')
-          #   start_date = Date.strptime(daterange[0], '%d/%m/%Y')
-          #   end_date  = Date.strptime(daterange[1], '%d/%m/%Y')
-          #   @invoices = @invoices
-          #     .where('date::date BETWEEN ? AND ?', start_date, end_date)
-          # end
         end
 
         def paginated_invoices

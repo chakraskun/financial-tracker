@@ -1,0 +1,192 @@
+#kt_content.content.d-flex.flex-column.flex-column-fluid
+  #kt_subheader.subheader.py-2.py-lg-4.subheader-solid
+    .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
+      .d-flex.align-items-center.flex-wrap.mr-2
+        h5.text-dark.font-weight-bold.mt-2.mb-2.mr-5 Dashboard
+      .d-flex.align-items-center data-controller="daterange-dashboard"
+        a#kt_dashboard_daterangepicker_custom.btn.btn-sm.btn-light.font-weight-bold.mr-2[
+            data-placement="left"
+            data-toggle="tooltip"
+            title=("Select dashboard daterange") 
+            data-start-date="#{params[:start_date] || @start_date}"
+            data-end-date="#{params[:end_date] || @end_date}"
+          ]
+          span#kt_dashboard_daterangepicker_title_custom.text-muted.font-size-base.font-weight-bold.mr-2 Today
+          span#kt_dashboard_daterangepicker_date_custom.text-primary.font-size-base.font-weight-bolder Aug 16
+
+  .d-flex.flex-column-fluid
+    .container
+      .row
+        .col-12.col-md-4
+          .card.card-custom.gutter-b.card-stretch
+            .card-body.text-center.pt-4
+              .d-flex
+              .my-2
+                a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Income
+              span.font-weight-bold.font-size-h3 = @total_income.format
+              .my-2 
+                a.button.btn.btn-info.font-weight-bold.btn-sm[
+                  href="#{admin_invoices_path}"
+                ]
+                  | See Details
+        .col-12.col-md-4
+          .card.card-custom.gutter-b.card-stretch
+            .card-body.text-center.pt-4
+              .d-flex
+              .my-2
+                a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Expense
+              span.font-weight-bold.font-size-h3 = @total_expense.format
+              .my-2 
+                a.button.btn.btn-info.font-weight-bold.btn-sm[
+                  href="#{admin_invoices_path}"
+                ]
+                  | See Details
+        .col-12.col-md-4
+          div[
+            class="card card-custom gutter-b card-stretch #{@current_balance.negative? ? "bg-light-danger" : "bg-light-success" }"
+          ]
+            .card-body.text-center.pt-4
+              .d-flex
+              .my-2
+                a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Balance
+              span.font-weight-bold.font-size-h3 = @current_balance.format
+
+        / .row
+        /   .col-xl-8.col-lg-8.col-md-8.col-sm-8
+        /     .card.card-custom.gutter-b.card-stretch[
+        /       style="border:1px solid #ffa801"
+        /     ]
+        /       .card-body.text-center.pt-4
+        /         .d-flex.justify-content-end
+        /         .my-2
+        /           a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Late Payment
+        /         .row
+        /           .col-3
+        /             .d-flex.justify-content-end
+        /             .my-2
+        /               a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Capital
+        /             span.text-light.font-weight-bold.font-size-h5 = @sum_total_capital_late_payment.to_money.format
+        /           .col-3
+        /             .d-flex.justify-content-end
+        /             .my-2
+        /               a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Margin
+        /             span.text-light.font-weight-bold.font-size-h5 = @sum_total_profit_late_payment.to_money.format
+        /           .col-3
+        /             .d-flex.justify-content-end
+        /             .my-2
+        /               a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Total
+        /             span.text-light.font-weight-bold.font-size-h5 = @sum_total_late_payment.to_money.format
+        /           .col-3
+        /             .d-flex.justify-content-end
+        /             .my-2
+        /               a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Total Order
+        /             span.text-light.font-weight-bold.font-size-h5 = @sum_count_late_payment
+        /         .my-2 
+        /           button.btn.btn-info.font-weight-bold.btn-sm[
+        /             data-toggle="modal"
+        /             data-target="#detailLatePayment"
+        /           ]
+        /             | See Details
+                
+        /   .col-xl-4.col-lg-4.col-md-4.col-sm-4
+        /     .card.card-custom.gutter-b.card-stretch[
+        /       style="border:1px solid #ffa801"
+        /     ]
+        /       .card-body.text-center.pt-4
+        /         .d-flex.justify-content-end
+        /         .my-2
+        /           a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Turnover (days)
+        /         .row
+        /           .col-4
+        /             .d-flex.justify-content-end
+        /             .my-2
+        /               a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Min
+        /             span.text-light.font-weight-bold.font-size-h3
+        /               = @dashboard_turnover_days_min.min
+        /           .col-4
+        /             .d-flex.justify-content-end
+        /             .my-2
+        /               a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Max
+        /             span.text-light.font-weight-bold.font-size-h3
+        /               = @dashboard_turnover_days_max.max
+        /           .col-4
+        /             .d-flex.justify-content-end
+        /             .my-2
+        /               a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Avg
+        /             span.text-light.font-weight-bold.font-size-h3
+        /               = @dashboard_turnover_days_average.sum / @dashboard_turnover_days_average.count
+        /         .my-2 
+        /           button.btn.btn-info.font-weight-bold.btn-sm[
+        /             data-toggle="modal"
+        /             data-target="#detailTurnoverDays"
+        /           ]
+        /             | See Details
+
+        / .row
+        /   .col-xl-4.col-lg-4.col-md-4.col-sm-4
+        /     .card.card-custom.gutter-b.card-stretch
+        /       .card-header.border-0.py-5.text-center
+        /         h3.card-title.font-weight-bolder style="color: #e99a33;" Project Income
+        /       .card-body.d-flex.flex-column.p-0
+        /         div[
+        /           id="dashboard_"
+        /           style=("height:200px;border:1px solid #ffa801;border-radius:10px;")
+        /           data-controller="dashboard--project-income-pie"
+        /           data-project-income-pie-project-income="#{@dashboard_project_income}"
+        /           data-project-income-pie-project-income-label="#{@dashboard_project_income_label}"
+        /         ] 
+                
+        /   .col-xl-4.col-lg-4.col-md-4.col-sm-4
+        /     - if @sum_upcoming_capital.to_money > 1.to_money
+        /       .card.card-custom.gutter-b.card-stretch
+        /         .card-header.border-0.py-5.text-center
+        /           h3.card-title.font-weight-bolder style="color: #e99a33;" Capital Allocation
+        /         .card-body.d-flex.flex-column.p-0
+        /           div[
+        /             id="dashboard_"
+        /             style=("height:200px;border:1px solid #ffa801;border-radius:10px;")
+        /             data-controller="dashboard--capital-allocation-pie"
+        /             data-capital-allocation="#{@dashboard_upcoming_capital}"
+        /             data-capital-allocation-label="#{@dashboard_project_income_label}"
+        /           ]
+        /     - else 
+        /       .card.card-custom.gutter-b.card-stretch
+        /         .card-header.border-0.py-5.text-center
+        /           h3.card-title.font-weight-bolder style="color: #e99a33;" Capital Allocation
+        /         .card-body.d-flex.flex-column.p-0
+        /           | Ongoing Capital = #{@sum_upcoming_capital.to_money.format}
+                
+        /   .col-xl-4.col-lg-4.col-md-4.col-sm-4
+        /     .card.card-custom.gutter-b.card-stretch
+        /       .card-header.border-0.py-5.text-center
+        /         h3.card-title.font-weight-bolder style="color: #e99a33;" Project Income
+        /       .card-body.d-flex.flex-column.p-0
+        /         div[
+        /           id="dashboard_"
+        /           style=("height:200px;border:1px solid #ffa801;border-radius:10px;")
+        /           data-controller="dashboard--project-income-bar"
+        /           data-project-income-bar-project-income="#{@dashboard_project_income}"
+        /           data-project-income-bar-project-income-label="#{@dashboard_project_income_label}"
+        /         ] 
+
+        / .row 
+        /   .col-12
+        /     .card.card-custom.gutter-b.card-stretch
+        /       .card-header.border-0.py-5.text-center
+        /         h3.card-title.font-weight-bolder style="color: #e99a33;" Monthly Income
+        /       .card-body.d-flex.flex-column.p-0
+        /         div[
+        /           id="dashboard_"
+        /           style=("height:200px;border:1px solid #ffa801;border-radius:10px;")
+        /           data-controller="dashboard--monthly-income-line"
+        /           data-profit_tube_5="#{@dashboard_total_net_profit_tube_5}"
+        /           data-profit_tube_3="#{@dashboard_total_net_profit_tube_3}"
+        /           data-profit_tube_12="#{@dashboard_total_net_profit_tube_12}"
+        /           data-profit_tube_3_rolling="#{@dashboard_total_net_profit_tube_3_rolling}"
+        /           data-profit_scrap_narogong="#{@dashboard_total_net_profit_scrap_narogong}"
+        /           data-profit_scrap_karawang="#{@dashboard_total_net_profit_scrap_karawang}"
+        /           data-profit_consumables="#{@dashboard_total_net_profit_consumables}"
+        /           data-profit_variable_project="#{@dashboard_total_net_profit_variable_project}"
+        /           data-categories="#{@categories}"
+        /         ] 
+= render "modal" 

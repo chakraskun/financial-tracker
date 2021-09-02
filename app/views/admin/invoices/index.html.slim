@@ -3,51 +3,56 @@
     .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
       .d-flex.align-items-center.flex-wrap.mr-2
         h5.text-dark.font-weight-bold.mt-2.mb-2.mr-2 Invoice
+      .d-flex.justify-content-end 
+        button.btn.btn-primary.font-weight-bolder.mr-2.my-1[
+          data-target="#add"
+          data-toggle="modal"
+          type="button"
+        ]
+          i.la.la-plus
+          | Create New Invoice
 
   .d-flex.flex-column-fluid
     .container
-      .card.card-custom
-        .card-header
-          .card-title
-            span.card-icon
-              i.flaticon2-favourite.text-primary
-            h3.card-label Invoice List
-
-          .card-toolbar
-            .row.d-flex.justify-content-center
-              button.btn.btn-primary.font-weight-bolder.mr-2.my-1[
-                data-target="#add"
-                data-toggle="modal"
-                type="button"
+      .row 
+        .col-12.col-md-6.mb-4
+          .card.card-custom
+            .card-header
+              .card-title
+                span.card-icon
+                  i.flaticon2-favourite.text-primary
+                h3.card-label Pemasukan
+              .card-toolbar.font-weight-bolder
+                = @total_income&.format
+            .card-body
+              css:
+                .datatable.datatable-default.datatable-loaded > .datatable-table {
+                  overflow-x: scroll;
+                  width: 100%;
+                }
+              #kt_datatable.datatable.datatable-bordered.datatable-head-custom[
+                data-admin--invoices--index-data-path=("#{api_admin_invoices_index_income_path}")
+                data-controller="admin--invoices--index"
               ]
-                i.la.la-plus
-                | Create New Invoice
-              = render "add_invoice", invoice: @new_invoice
-
-            /   = form_with url: admin_exports_download_index_shipments_path(format: :pdf),
-            /       class:'btn btn-danger font-weight-bolder mr-2 my-1', method: :post, local:1,
-            /       data: {\
-            /         controller: 'admin--shared--exports--data',\
-            /         action: 'submit->admin--shared--exports--data#submit',\
-            /         'admin--shared--exports--data-input-selectors': '#kt_datatable_search_query:search,#kt_datatable_search_destination_type:destination_type,#kt_datatable_search_shipper_name:shipper_name,#kt_dashboard_daterangepicker_custom:daterange'\
-            /       } do
-            /     button.btn.btn-danger.font-weight-bolder[
-            /       type="submit"
-            /       style="background-color:transparent;border:none;text-align:left;padding:0;"
-            /     ]
-            /       i.fas.fa-file-pdf
-            /       | Export PDF
-
-        .card-body
-          css:
-            .datatable.datatable-default.datatable-loaded > .datatable-table {
-              overflow-x: scroll;
-              width: 100%;
-            }
-          #kt_datatable.datatable.datatable-bordered.datatable-head-custom[
-            data-admin--invoices--index-data-path=("#{api_admin_invoices_index_path}")
-            data-controller="admin--invoices--index"
-          ]
+        .col-12.col-md-6
+          .card.card-custom
+            .card-header
+              .card-title
+                span.card-icon
+                  i.flaticon2-favourite.text-primary
+                h3.card-label Pengeluaran
+              .card-toolbar.font-weight-bolder
+                = @total_expense&.format
+            .card-body
+              css:
+                .datatable.datatable-default.datatable-loaded > .datatable-table {
+                  overflow-x: scroll;
+                  width: 100%;
+                }
+              #kt_datatable.datatable.datatable-bordered.datatable-head-custom[
+                data-admin--invoices--index-data-path=("#{api_admin_invoices_index_expense_path}")
+                data-controller="admin--invoices--index"
+              ]
         /   .row.d-flex.justify-content-center
         /     .col-lg-3.col-md-3.my-2.my-md-0
         /       .d-flex.align-items-center
@@ -99,3 +104,5 @@
         /             span.input-group-text
         /               span.navi-icon
         /                 i.fas.fa-search
+
+= render "add_invoice", invoice: @new_invoice

@@ -30,7 +30,8 @@ Rails.application.routes.draw do
         post 'get-all', to: 'index#show', as: :index
       end
       namespace :invoices do
-        post 'get-all', to: 'index#show', as: :index
+        post 'get-income', to: 'index_income#show', as: 'index_income'
+        post 'get-expense', to: 'index_expense#show', as: 'index_expense'
       end
     end
   end

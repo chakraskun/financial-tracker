@@ -5,6 +5,9 @@ module Admin
     before_action :invoice, only: %i[show edit download update_document_transaction]
 
     def index
+      @total_expense = Invoice.expense.sum(&:price).to_money
+      @total_income = Invoice.income.sum(&:price).to_money
+      @current_balance = @total_income - @total_expense
     end
 
     def show
@@ -41,7 +44,7 @@ module Admin
 
     def invoice_params
       @invoice_params = params.permit(
-        :name, :price, :description, :type, :date
+        :name, :price, :description, :type, :date, :invoice_type
       )
     end
     

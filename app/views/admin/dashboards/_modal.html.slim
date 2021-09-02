@@ -1,0 +1,53 @@
+#detailIncome.modal.fade[
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="staticBackdrop"
+  aria-hidden="true"
+]
+  .modal-dialog.modal-dialog-centered.modal-xl[role="document"]
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title
+          | Detail Income
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          i.ki.ki-close[aria-hidden="true"]
+      .modal-body
+        css:
+          .datatable.datatable-default.datatable-loaded > .datatable-table {
+            overflow-x: scroll;
+            width: 100%;
+          }
+        #kt_datatable.datatable.datatable-bordered.datatable-head-custom[
+          data-admin--invoices--index-data-path=("#{api_admin_invoices_index_income_path}")
+          data-controller="admin--invoices--index"
+        ]
+      .modal-footer
+      button.btn.btn-light-danger.font-weight-bold[type="button" data-dismiss="modal"]
+          | Close
+
+#detailExpense.modal.fade[
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="staticBackdrop"
+  aria-hidden="true"
+]
+  .modal-dialog.modal-dialog-centered.modal-xl[role="document"]
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title
+          | Detail Expense
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          i.ki.ki-close[aria-hidden="true"]
+      .modal-body
+        css:
+          .datatable.datatable-default.datatable-loaded > .datatable-table {
+            overflow-x: scroll;
+            width: 100%;
+          }
+        #kt_datatable.datatable.datatable-bordered.datatable-head-custom[
+          data-admin--invoices--index-data-path=("#{api_admin_invoices_index_expense_path}")
+          data-controller="admin--invoices--index"
+        ]
+      .modal-footer
+        button.btn.btn-light-danger.font-weight-bold[type="button" data-dismiss="modal"]
+          | Close

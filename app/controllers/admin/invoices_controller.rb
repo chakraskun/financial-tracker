@@ -2,7 +2,7 @@
 
 module Admin
   class InvoicesController < Admin::ApplicationController
-    before_action :invoice, only: %i[show edit]
+    before_action :invoice, only: %i[show edit update]
     before_action :selection_list, only: %i[index edit ajax_dropdown_name]
 
     def index
@@ -11,7 +11,32 @@ module Admin
       @current_balance = @total_income - @total_expense
     end
 
-    def show
+    def show; end
+    def edit; end
+
+    def create
+      service = ::Invoices::CreateService.new(
+        invoice_params,
+        current_user.id
+      )
+      if !service.run
+        return redirect_to admin_invoices_path,
+          alert: "Failed to create invoice, #{service.error_messages.to_sentence}"
+      end
+      redirect_to admin_invoices_path, notice: "Invoice has been created"
+    end
+
+    def update
+      service = ::Invoices::UpdateService.new(
+        params[:id],
+        params['invoice'],
+        current_user.id
+      )
+      if !service.run
+        return redirect_to admin_invoices_path,
+          alert: "Failed to update invoice, #{service.error_messages.to_sentence}"
+      end
+      redirect_to admin_invoices_path, notice: "Invoice has been updated"
     end
 
     def ajax_dropdown_name
@@ -32,26 +57,11 @@ module Admin
       end
     end
 
-    def create
-      service = ::Invoices::CreateService.new(
-        invoice_params,
-        current_user.id
-      )
-
-      if !service.run
-        return redirect_to admin_invoices_path,
-          alert: "Failed to create invoice, #{service.error_messages.to_sentence}"
-      end
-      redirect_to admin_invoices_path, notice: "Invoice has been created"
-    end
-
     def destroy
       if !invoice.destroy
-
         flash[:danger] = "Failed to delete invoice. #{shipper.errors.full_messages.to_sentence}"
         return redirect_to admin_invoices_path
       end
-
       redirect_to admin_invoices_path,
         flash: { success: 'Success delete Invoice' }
     end

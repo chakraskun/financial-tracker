@@ -78,6 +78,7 @@ module Api
               price: invoice.price&.format,
               
               show_path: admin_invoice_path(id: invoice.id),
+              edit_path: edit_admin_invoice_path(id: invoice.id),
               delete_path: admin_invoice_path(id: invoice.id)
             }
           end

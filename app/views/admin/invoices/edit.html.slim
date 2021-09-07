@@ -1,0 +1,46 @@
+#kt_content.content.d-flex.flex-column.flex-column-fluid
+  #kt_subheader.subheader.py-2.py-lg-4.subheader-solid
+    .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
+      .d-flex.align-items-center.flex-wrap.mr-2
+        h5.text-dark.font-weight-bold.mt-2.mb-2.mr-2 Edit Invoices
+
+  .d-flex.flex-column-fluid
+    .container
+      .card.card-custom
+        .card-header
+          .card-title
+            span.card-icon
+              i.flaticon2-favourite.text-primary
+            h3.card-label
+              | Edit Invoice #{@invoice.name}
+
+        .card-body.pt-0
+          .tab-content.pt-0
+            = form_with model: @invoice, url: admin_invoice_path(@invoice), method: :put do |f|
+              .card-body
+                .form-group.row
+                  .col-lg-2.col-form-label.text-lg-right
+                    strong Date:
+                  .col-lg-4
+                    = f.text_field :date, class: "form-control", data: { controller: "picker--date" },
+                    placeholder: "Date", autocomplete: "off", required: true, value: "#{readable_date_2(@invoice.date)}"
+                  .col-lg-2.col-form-label.text-lg-right
+                    strong Price:
+                  .col-lg-4
+                    = f.text_field :price, class: "form-control", data: { controller: "input-price"},
+                    placeholder: "Price", autocomplete: "off", required: true
+
+                .form-group.row
+                  .col-lg-2.col-form-label.text-lg-right
+                    strong Description:
+                  .col-lg-4
+                    = f.text_field :description, class: "form-control",
+                    placeholder: "Description", autocomplete: "off", required: true
+                  
+              .modal-footer
+                a.btn.btn-light-danger.font-weight-bold[
+                  href="#{root_path}"
+                  data-dismiss="modal"
+                  type="button"
+                ] Cancel
+                = f.submit "Save", class: "btn btn-light-success font-weight-bold"

@@ -2,7 +2,8 @@
 
 module Admin
   class InvoicesController < Admin::ApplicationController
-    before_action :invoice, only: %i[show edit download update_document_transaction]
+    before_action :invoice, only: %i[show edit]
+    before_action :selection_list, only: %i[index edit ajax_dropdown_name]
 
     def index
       @total_expense = Invoice.expense.sum(&:price).to_money
@@ -11,6 +12,24 @@ module Admin
     end
 
     def show
+    end
+
+    def ajax_dropdown_name
+      if params["invoice_type"] == 'expense'
+        render json: {
+          dropdown_html: render_to_string(
+            partial: 'admin/invoices/partials/dropdown_name_list',
+            locals: {dropdown_list: @expense_list}
+          )
+        }
+      else
+        render json: {
+          dropdown_html: render_to_string(
+            partial: 'admin/invoices/partials/dropdown_name_list',
+            locals: {dropdown_list: @income_list}
+          )
+        }
+      end
     end
 
     def create
@@ -48,5 +67,19 @@ module Admin
       )
     end
     
+    def selection_list
+      @income_list = ['Ratu Meti','Asni Djamil']
+      @expense_list = [
+        'Wedding Organizer',
+        'MUA',
+        'Venue',
+        'Shoes - Bride & Groom',
+        'Shoes - Moms & Sisters',
+        'Attire - Bride & Groom',
+        'Attire - Moms & Sisters',
+        'Administrative',
+        'Others'
+      ]
+    end
   end
 end

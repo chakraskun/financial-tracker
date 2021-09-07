@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     root 'dashboards#index'
     resources :projects
     resources :invoices
+    get 'ajax_dropdown_name/:invoice_type',
+      to: 'invoices#ajax_dropdown_name',
+      as: :dropdown_name_list
   end
 
   namespace :api do

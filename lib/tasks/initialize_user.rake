@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 namespace :initialize_user do
   desc 'Create User'
-  task user: :environment do
+  task run: :environment do
     user_test = User.find_or_initialize_by email: 'kuntjoro.chakras@gmail.com'
     user_test_attributes = {
       name: 'Admin',

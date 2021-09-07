@@ -1,0 +1,11 @@
+select.form-control[
+  name="name"
+  type="text"
+  placeholder="== Choose One =="
+  autocomplete="false"
+  data-controller="select2"
+]
+  option
+  - dropdown_list.each do |list|
+    option[value="#{list}"]
+      = list

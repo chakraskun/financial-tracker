@@ -3,7 +3,6 @@ import { Controller } from 'stimulus';
 export default class extends Controller {
   connect(){
     $(this.element).select2({
-      tags: true,
       width: '100%',
       matcher: function(params, data) {
         let original_matcher = $.fn.select2.defaults.defaults.matcher;

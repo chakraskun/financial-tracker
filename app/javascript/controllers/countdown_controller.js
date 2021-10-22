@@ -7,7 +7,7 @@ export default class extends Controller {
 
   initialize(){
     var timer = document.querySelector('.js-countdown')
-    var countDownDate = new Date("Dec 11, 2021 10:00:00").getTime();
+    var countDownDate = new Date("Dec 11, 2021 8:00:00").getTime();
     var x = setInterval(function() {
 
       var now = new Date().getTime();

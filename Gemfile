@@ -21,9 +21,6 @@ gem 'audited'
 gem 'clearance'
 gem 'kaminari'
 gem 'rolify'
-gem 'faker'
-gem 'fast_jsonapi'
-
 #pdf
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'

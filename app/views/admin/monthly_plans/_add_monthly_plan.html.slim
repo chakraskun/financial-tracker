@@ -1,0 +1,29 @@
+#add.modal.fade[
+  aria-hidden="true"
+  aria-labelledby="staticBackdrop"
+  data-backdrop="static"
+  role="dialog"
+  tabindex="-1"
+]
+  .modal-dialog.modal-md role="document"
+    .modal-content
+      = form_with model: monthly_plan, url: admin_monthly_plans_path, method: :post do |f|
+        .modal-header
+          h5#exampleModalLabel.modal-title Create Monthly Plans
+          button.close aria-label="Close" data-dismiss="modal" type="button"
+            i.ki.ki-close aria-hidden="true"
+        .modal-body
+          .form-group.row
+            .col-lg-3.col-form-label.text-lg-right
+              strong Select Month
+            .col-lg-9
+              = f.text_field :month, class: "form-control", data: { controller: "picker--month" },
+              placeholder: "Date", autocomplete: "off", required: true
+            
+        .modal-footer
+          a.btn.btn-light-danger.font-weight-bold[
+            href="#{root_path}"
+            data-dismiss="modal"
+            type="button"
+          ] Cancel
+          = f.submit "Save", class: "btn btn-light-success font-weight-bold"

@@ -17,9 +17,11 @@ module Api
         def invoices
           return @invoices if @invoices.present?
 
-          @invoices = Invoice
-            .income
-            .order(date: :desc)            
+          @invoices = Kaminari.paginate_array(Invoice
+            .where(invoice_type: 'income')
+            .order(date: :desc)
+            .to_a
+          )
           if sort.present?
             @invoices = @invoices
               .order("#{sort[:field]}": sort[:sort])
@@ -72,7 +74,7 @@ module Api
             i = index + start_index
             @data[i] = {
               index: i,
-              name: invoice.name,
+              # name: invoice.name,
               description: invoice.description,
               date: readable_date_2(invoice.date),
               price: invoice.price&.format,

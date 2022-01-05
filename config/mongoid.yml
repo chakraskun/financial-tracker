@@ -1,0 +1,83 @@
+development:
+  clients:
+    default:
+      database: finance-tracker-api
+      hosts:
+        - localhost:27017
+      options:
+        user: 'mongodb'
+
+        password: 'mongodb'
+
+        roles:
+          - 'dbOwner'
+
+
+
+
+
+
+
+        max_pool_size: 5
+
+        min_pool_size: 1
+
+        wait_queue_timeout: 5
+
+        connect_timeout: 5
+
+        socket_timeout: 5
+
+
+
+
+
+
+
+
+
+  options:
+
+
+
+    raise_not_found_error: false
+
+
+
+
+
+    log_level: :warn
+
+
+
+test:
+  clients:
+    default:
+      database: finance-tracker-api-test
+      hosts:
+        - localhost:27017
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
+
+staging:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
+
+      options:
+        connect_timeout: 15
+        raise_not_found_error: false
+
+production:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
+
+      options:
+        connect_timeout: 15
+        raise_not_found_error: false
+
+options:
+    raise_not_found_error: false

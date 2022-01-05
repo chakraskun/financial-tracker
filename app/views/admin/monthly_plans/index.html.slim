@@ -1,0 +1,32 @@
+#kt_content.content.d-flex.flex-column.flex-column-fluid
+  #kt_subheader.subheader.py-2.py-lg-4.subheader-solid
+    .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
+      .d-flex.align-items-center.flex-wrap.mr-2
+        h5.text-dark.font-weight-bold.mt-2.mb-2.mr-2 Monthly Plan
+      .d-flex.justify-content-end 
+        button.btn.btn-primary.font-weight-bolder.mr-2.my-1[
+          data-target="#add"
+          data-toggle="modal"
+          type="button"
+        ]
+          i.la.la-plus
+          | Create New Monthly Plan
+
+  .d-flex.flex-column-fluid
+    .container
+      .row
+        - MonthlyPlan.each do |plan| 
+          .col-12.col-md-4
+            .card.card-custom.gutter-b.card-stretch
+              .card-body.text-center.pt-4
+                .d-flex
+                .my-2
+                  a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 #{plan.month}
+                span.font-weight-bold.font-size-h3
+                .my-2 
+                  a.button.btn.btn-info.font-weight-bold.btn-sm[
+                    href="#{admin_monthly_plan_path(plan)}"
+                  ]
+                    | See Details
+
+= render "add_monthly_plan", monthly_plan: @new_monthly_plan

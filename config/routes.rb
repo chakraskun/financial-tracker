@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     root 'dashboards#index'
     resources :projects
     resources :invoices
+    resources :monthly_plans
     get 'ajax_dropdown_name/:invoice_type',
       to: 'invoices#ajax_dropdown_name',
       as: :dropdown_name_list

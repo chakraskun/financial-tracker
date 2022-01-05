@@ -6,8 +6,8 @@ module Admin
     before_action :selection_list, only: %i[index edit ajax_dropdown_name]
 
     def index
-      @total_expense = Invoice.expense.sum(&:price).to_money
-      @total_income = Invoice.income.sum(&:price).to_money
+      @total_expense = Invoice.where(invoice_type: 'expense').sum(&:price)
+      @total_income = Invoice.where(invoice_type: 'income').sum(&:price)
       @current_balance = @total_income - @total_expense
     end
 

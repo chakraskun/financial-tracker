@@ -3,12 +3,12 @@
     .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
       .d-flex.align-items-center.flex-wrap.mr-1
         .d-flex.align-items-baseline.flex-wrap.mr-5
-          h5.text-dark.font-weight-bold.my-1.mr-5 Invoices
+          h5.text-dark.font-weight-bold.my-1.mr-5 Monthly Plan #{@plan.month}
           ul.breadcrumb.breadcrumb-transparent.breadcrumb-dot.font-weight-bold.p-0.my-2.font-size-sm
-            li.breadcrumb-item
-              a.text-muted href="#{admin_invoices_path}" Invoice List
-            li.breadcrumb-item
-              a.text-muted href="" Show
+            / li.breadcrumb-item
+            /   a.text-muted href="#{admin_invoices_path}" Invoice List
+            / li.breadcrumb-item
+            /   a.text-muted href="" Show
 
   .d-flex.flex-column-fluid
     .container-fluid
@@ -24,13 +24,4 @@
                 label.col-5.col-form-label Name:
                 .col-7.my-auto
                   span.form-control-plaintext.font-weight-bolder
-                    = @invoice.name
-              .form-group.row.my-2
-                label.col-5.col-form-label Price
-                .col-7.my-auto
-                  span.form-control-plaintext.font-weight-bolder
-                    = @invoice.price&.format
-              .form-group.row.my-2
-                label.col-5.col-form-label Type
-                .col-7.my-auto
-                  = @invoice.invoice_type
+                    = @plan.month

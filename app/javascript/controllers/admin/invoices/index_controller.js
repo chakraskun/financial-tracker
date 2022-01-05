@@ -8,14 +8,6 @@ export default class extends DatatablesController {
   datatableColumns(){
     return [
       {
-        field: 'name',
-        title: 'Name',
-        autoHide: false,
-        template: function(data) {
-          return `<span class="font-weight-bolder">${data.name}</span>`;
-        }
-      },
-      {
         field: 'description',
         title: 'Description',
         autoHide: false,

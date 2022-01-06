@@ -6,10 +6,6 @@ Rails.application.routes.draw do
   get '/sign_in', to: 'sessions#new', as: 'sign_in'
   delete '/sign_out', to: 'sessions#destroy'
 
-  get 'service-worker',
-    to: 'utils#service_worker',
-    as: :service_worker
-
   resources :passwords, controller: "passwords", only: [:create, :new]
 
   resources :users do

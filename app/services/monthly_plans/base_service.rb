@@ -14,7 +14,7 @@ module MonthlyPlans
           .require(:monthly_plan)
           .permit(
             :id,
-            :month
+            :month,
           )
       end
 
@@ -22,8 +22,9 @@ module MonthlyPlans
         @monthly_lines_params ||= @params.permit(
           monthly_plan_lines: [
             :id,
-            :shopping_list,
+            :shopping_list_id,
             :price,
+            :monthly_plan_id
           ]
         )[:monthly_plan_lines]
       end

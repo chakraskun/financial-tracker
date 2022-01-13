@@ -44,8 +44,8 @@
               ]
                 .row
                   #shoppingListDiv.col-6.form-group
-                    = select_tag 'monthly_plan_lines[0][shopping_list]',
-                      options_for_select(['a','b']),
+                    = select_tag 'monthly_plan_lines[0][shopping_list_id]',
+                      options_for_select(monthly_plan.shopping_list_selection_list),
                       include_blank: '== Pilih ==',
                       class: 'form-control selectize',
                       required: true,

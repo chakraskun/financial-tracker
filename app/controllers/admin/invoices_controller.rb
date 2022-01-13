@@ -16,28 +16,28 @@ module Admin
 
     def create
       service = ::Invoices::CreateService.new(
-        invoice_params,
+        params,
         current_user.id
       )
       if !service.run
         return redirect_to admin_invoices_path,
           alert: "Failed to create invoice, #{service.error_messages.to_sentence}"
       end
-      redirect_to admin_invoices_path, notice: "Invoice has been created"
+      redirect_to admin_monthly_plans_path, notice: "Invoice has been created"
     end
 
-    def update
-      service = ::Invoices::UpdateService.new(
-        params[:id],
-        params['invoice'],
-        current_user.id
-      )
-      if !service.run
-        return redirect_to admin_invoices_path,
-          alert: "Failed to update invoice, #{service.error_messages.to_sentence}"
-      end
-      redirect_to admin_invoices_path, notice: "Invoice has been updated"
-    end
+    # def update
+    #   service = ::Invoices::UpdateService.new(
+    #     params[:id],
+    #     params['invoice'],
+    #     current_user.id
+    #   )
+    #   if !service.run
+    #     return redirect_to admin_invoices_path,
+    #       alert: "Failed to update invoice, #{service.error_messages.to_sentence}"
+    #   end
+    #   redirect_to admin_invoices_path, notice: "Invoice has been updated"
+    # end
 
     def ajax_dropdown_name
       if params["invoice_type"] == 'expense'
@@ -67,29 +67,23 @@ module Admin
     end
 
     private
-    def invoice
-      @invoice ||= Invoice.find_by_id(params[:id])
-    end
+      def invoice
+        @invoice ||= Invoice.find_by_id(params[:id])
+      end
 
-    def invoice_params
-      @invoice_params = params.permit(
-        :name, :price, :description, :type, :date, :invoice_type
-      )
-    end
-    
-    def selection_list
-      @income_list = ['Ratu Meti','Asni Djamil']
-      @expense_list = [
-        'Wedding Organizer',
-        'MUA',
-        'Venue',
-        'Shoes - Bride & Groom',
-        'Shoes - Moms & Sisters',
-        'Attire - Bride & Groom',
-        'Attire - Moms & Sisters',
-        'Administrative',
-        'Others'
-      ]
-    end
+      def selection_list
+        @income_list = ['Ratu Meti','Asni Djamil']
+        @expense_list = [
+          'Wedding Organizer',
+          'MUA',
+          'Venue',
+          'Shoes - Bride & Groom',
+          'Shoes - Moms & Sisters',
+          'Attire - Bride & Groom',
+          'Attire - Moms & Sisters',
+          'Administrative',
+          'Others'
+        ]
+      end
   end
 end

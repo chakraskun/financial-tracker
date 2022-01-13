@@ -8,7 +8,6 @@ module MonthlyPlanLines
 
     def action
       @line = MonthlyPlanLine.new(@params)
-      binding.pry
       @line.save!
     end
 

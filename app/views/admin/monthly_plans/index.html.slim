@@ -16,12 +16,18 @@
     .container
       .row
         - MonthlyPlan.each do |plan| 
-          .col-12.col-md-4
+          .col-12.col-md-3
             .card.card-custom.gutter-b.card-stretch
+              .card-header
+                .card-title
+                  | #{plan.month}
+                .card-toolbar 
+                  button.btn.btn-danger.btn-sm.btn-icon.btn-shadow.btn-hover-danger
+                    i.la.la-trash
               .card-body.text-center.pt-4
                 .d-flex
                 .my-2
-                  a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 #{plan.month}
+                  a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 #{plan.price.format}
                 span.font-weight-bold.font-size-h3
                 .my-2 
                   a.button.btn.btn-info.font-weight-bold.btn-sm[

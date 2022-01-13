@@ -3,12 +3,16 @@
 module Admin
   class MonthlyPlansController < Admin::ApplicationController
     before_action :monthly_plan, only: %i[show edit update]
+    before_action :selection_list, only: %i[show]
 
     def index
       @new_monthly_plan = MonthlyPlan.new
     end
 
-    def show; end
+    def show
+      @invoice = Invoice.new
+    end
+
     def edit; end
 
     def create
@@ -32,9 +36,32 @@ module Admin
         flash: { success: 'Success delete Invoice' }
     end
 
+    def ajax_dropdown_name
+      if params["invoice_type"] == 'expense'
+        render json: {
+          dropdown_html: render_to_string(
+            partial: 'admin/monthly_plans/partials/dropdown_name_list',
+            locals: {dropdown_list: @expense_list}
+          )
+        }
+      else
+        render json: {
+          dropdown_html: render_to_string(
+            partial: 'admin/monthly_plans/partials/dropdown_name_list',
+            locals: {dropdown_list: @income_list}
+          )
+        }
+      end
+    end
+
     private
       def monthly_plan
         @plan ||= MonthlyPlan.find_by(id: params[:id])
+      end
+
+      def selection_list
+        @income_list = ['Chakras Andika','Vannia Alfiani']
+        @expense_list = @plan.expense_selection_list
       end
   end
 end

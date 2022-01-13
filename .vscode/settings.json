@@ -1,0 +1,199 @@
+{
+    /**
+     * Better Defaults
+     **/
+    "editor.copyWithSyntaxHighlighting": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.emptySelectionClipboard": false,
+    "workbench.editor.enablePreview": false,
+    "window.newWindowDimensions": "inherit",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "files.trimTrailingWhitespace": false,
+    "diffEditor.renderSideBySide": false,
+    "editor.snippetSuggestions": "top",
+    "editor.detectIndentation": false,
+    "window.nativeFullScreen": false,
+    "files.insertFinalNewline": false,
+    "files.trimFinalNewlines": true,
+    "workbench.sideBar.location": "right",
+    "workbench.editor.showTabs": true,
+    "editor.renderIndentGuides": false,
+    "editor.minimap.enabled": false,
+    "editor.lineNumbers": "on",
+  
+    /**
+     * Silence The Noise
+     */
+    "breadcrumbs.enabled": true,
+    "scm.diffDecorations": "none",
+    "editor.hover.enabled": false,
+    "editor.matchBrackets": "never",
+    "workbench.tips.enabled": false,
+    "editor.colorDecorators": false,
+    "git.decorations.enabled": false,
+    "workbench.startupEditor": "none",
+    "editor.lightbulb.enabled": false,
+    "editor.selectionHighlight": false,
+    "editor.overviewRulerBorder": false,
+    "editor.renderLineHighlight": "none",
+    "editor.occurrencesHighlight": false,
+    "problems.decorations.enabled": false,
+    "editor.renderControlCharacters": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.gotoLocation.multipleReferences": "goto",
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "editor.gotoLocation.multipleDeclarations": "goto",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "editor.gotoLocation.multipleImplementations": "goto",
+    "editor.gotoLocation.multipleTypeDefinitions": "goto",
+    "editor.accessibilitySupport": "off",
+    "editor.fontLigatures": true,
+    "editor.lineHeight": 0,
+    "editor.suggestFontSize": 15,
+    "editor.suggestLineHeight": 28,
+    "editor.tabSize": 2,
+    "terminal.integrated.fontSize": 12,
+    // "terminal.integrated.lineHeight": 1.5,
+  
+    /**
+     * Find
+     **/
+    "search.useIgnoreFiles": false,
+    "search.exclude": {
+      // Hide everything in /vendor, except the "laravel" and "livewire" folder.
+      "**/vendor/{[^l],?[^ai]}*": true,
+      // Hide everything in /public, except "index.php"
+      "**/public/{[^i],?[^n]}*": true,
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/_ide_helper.php": true,
+      "**/composer.lock": true,
+      "**/Gemfile.lock": true,
+      "**/yarn.lock": true,
+      "**/package-lock.json": true,
+      "**/tmp": true,
+      "**/log": true,
+      "storage": true,
+      ".phpunit.result.cache": true
+    },
+  
+    /**
+     * Code
+     **/
+    // Include "-" in word selection.
+    "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
+    "emmet.includeLanguages": {
+      "blade": "html",
+      "vue-html": "html",
+      "vue": "html",
+      "*.erb": "html",
+      "*.slim": "html",
+      "ruby": "html",
+      "javascript": "javascriptreact"
+    },
+    "files.associations": {
+      ".php_cs": "php",
+      ".php_cs.dist": "php",
+      "*.erb": "erb"
+    },
+    /**
+     * PHP
+     **/
+    "php.suggest.basic": false,
+  
+    /**
+     * PHP CS Fixer
+     **/
+    // "[php]": {
+    //     "editor.defaultFormatter": "junstyle.php-cs-fixer"
+    // },
+    "php-cs-fixer.onsave": true,
+    "php-cs-fixer.showOutput": false,
+    "php-cs-fixer.autoFixByBracket": false,
+    "php-cs-fixer.rules": "@PSR2",
+  
+    /**
+     * Prettier
+     **/
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+    },
+    "prettier.requireConfig": true,
+    "prettier.useEditorConfig": true,
+  
+    /**
+     * Window Settings
+     **/
+    // "window.nativeTabs": true,
+    "window.titleBarStyle": "native",
+    "customizeUI.titleBar": "inline",
+    "customizeUI.stylesheet": {
+      ".editor .title": "background: transparent !important;",
+      ".editor .title .label-container": "visibility: hidden;",
+      // Hide top-right buttons
+      ".editor .title .actions-container .action-item a": "visibility: hidden;",
+      // Show top-right "settings goto icon"
+      ".editor .title .actions-container .action-item a[title=\"Open Settings (UI)\"]": "visibility: initial;",
+      ".editor .title .actions-container .action-item a[title=\"Open Settings (JSON)\"]": "visibility: initial;",
+      // Make it the "right-most" icon.
+      ".editor .title .actions-container": "flex-direction: row-reverse;",
+      // Only show the scrollbar on hover.
+      ".editor .scrollbar .slider": "visibility: hidden",
+      ".editor .scrollbar:hover .slider": "visibility: initial",
+      // Change cursor color.
+      ".monaco-editor .cursor": "background: linear-gradient(to bottom, #7f00ff, #e100ff) !important; color: #292D3E !important"
+    },
+    "editor.formatOnSave": true,
+  
+    "colorize.languages": [
+      "css",
+      "scss",
+      "javascript",
+      "typescript",
+      "ruby",
+      "svg"
+    ],
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "files.autoSave": "off",
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    // "[go]": {
+    //   "editor.defaultFormatter": "golang.go-nightly"
+    // },
+  
+    // Causes the debug view to automatically appear when a breakpoint is hit. This
+    // setting is global and not configurable per-language.
+    "debug.openDebug": "openOnDebugBreak",
+    "dart.autoImportCompletions": false,
+    "dart.devToolsTheme": "light",
+    "[dart]": {
+      "editor.formatOnSave": true,
+      "editor.formatOnType": true,
+      "editor.rulers": [80],
+      "editor.selectionHighlight": false,
+      "editor.suggest.snippetsPreventQuickSuggestions": false,
+      "editor.suggestSelection": "first",
+      "editor.tabCompletion": "onlySnippets",
+      "editor.wordBasedSuggestions": false
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "workbench.statusBar.visible": false,
+    "window.menuBarVisibility": "compact",
+    "workbench.colorTheme": "One Dark Pro",
+    "indentRainbow.colors": [
+      "rgba(255,255,64,0.07)",
+      "rgba(127,255,127,0.07)",
+      "rgba(255,127,255,0.07)",
+      "rgba(79,236,236,0.07)"
+    ],
+    "terminal.integrated.tabs.enabled": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.inlineSuggest.enabled": true,
+    "editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": true,
+    "git.confirmSync": false
+  }
+  

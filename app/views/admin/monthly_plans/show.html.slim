@@ -13,15 +13,16 @@
   .d-flex.flex-column-fluid
     .container-fluid
       .row
-        .col-xl-5.col-lg-6
+        .col-12
           .card.card-custom.gutter-b
             .card-header.h-auto.py-4
               .card-title
                 h3.card-label
-                  | Invoice
+                  | Rincian Pengeluaran
             .card-body.py-4
-              .form-group.row.my-2
-                label.col-5.col-form-label Name:
-                .col-7.my-auto
-                  span.form-control-plaintext.font-weight-bolder
-                    = @plan.month
+              - @plan.lines.each do |line|
+                .form-group.row.my-2
+                  label.col-5.col-form-label #{line.shopping_list}
+                  .col-7.my-auto
+                    span.form-control-plaintext.font-weight-bolder
+                      = line.price.format

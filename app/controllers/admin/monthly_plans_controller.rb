@@ -13,14 +13,14 @@ module Admin
 
     def create
       service = ::MonthlyPlans::CreateService.new(
-        monthly_plan_params,
+        params,
         current_user.id
       )
       unless service.run
         return redirect_to admin_invoices_path,
           alert: "Failed to create monthly plan, #{service.error_messages.to_sentence}"
       end
-      redirect_to admin_invoices_path, notice: "Monthly Plan has been created"
+      redirect_to admin_monthly_plan_path(id: service.monthly.id), notice: "Monthly Plan has been created"
     end
 
     def destroy
@@ -35,12 +35,6 @@ module Admin
     private
       def monthly_plan
         @plan ||= MonthlyPlan.find_by(id: params[:id])
-      end
-
-      def monthly_plan_params
-        @monthly_plan_params = params.require(:monthly_plan).permit(
-          :month
-        )
       end
   end
 end

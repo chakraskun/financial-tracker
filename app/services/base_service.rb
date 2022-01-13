@@ -20,8 +20,9 @@ class BaseService
     ActiveRecord::Base.transaction do
       action
     end
+    teardown_setup
 
-    return false if error_messages.present?
+    return handle_unraised_error if error_messages.present?
     return true
   rescue => e
     Rails.logger.error "[SERVICE][ERROR] #{e}"
@@ -29,5 +30,10 @@ class BaseService
     return false
   end
 
+  def handle_unraised_error
+    raise error_messages.join('<br/>')
+  end
+
   def validate_before_action; end
+  def teardown_setup; end
 end

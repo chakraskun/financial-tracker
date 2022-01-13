@@ -1,14 +1,13 @@
 class MonthlyPlanLine
+  include MonthlyPlanLines::Helpers
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :list_type, type: String
+  field :shopping_list, type: String
   field :price, type: Money
-  field :date, :type => DateTime
   field :monthly_plan_id, type: String
   
   validates :price, presence: true
-  validates :date, presence: true
-  validates :list_type, presence: true
+  validates :shopping_list, presence: true
   validates :monthly_plan_id, presence: true
 end

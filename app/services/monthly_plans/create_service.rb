@@ -1,24 +1,22 @@
 # frozen_string_literal: true
 
 module MonthlyPlans
-  class CreateService < BaseService
-    def initialize monthly_plan_params, current_user_id
-      @monthly_plan_params = monthly_plan_params
-      @current_user_id = current_user_id
-    end
+  class CreateService < ::MonthlyPlans::BaseService
 
     def action
-      @monthly_plan = MonthlyPlan.new(@monthly_plan_params)
-      @monthly_plan.user_id = @current_user_id
-      @monthly_plan.save!
+      monthly.user_id = @current_user
+      if monthly_lines_params.present?
+        monthly_lines_params.each do |i,line_params|
+          plan_line = MonthlyPlanLine.new(line_params)
+          plan_line.monthly_plan_id = monthly.id
+          plan_line.save!
+        end
+      end
+      monthly.save!
     end
 
-    def monthly_plan
-      return @monthly_plan
-    end
-
-    def errors
-      return @monthly_plan.errors
+    def monthly
+      @monthly ||= MonthlyPlan.new(monthly_params)
     end
   end
 end

@@ -15,28 +15,24 @@
           | Create Invoice
 
   .d-flex.flex-column-fluid
-    .container-fluid
+    .container
       .row
-        .col-12
-          .card.card-custom.gutter-b
-            .card-header.h-auto.py-4
-              .card-title
-                h3.card-label
-                  | Rincian Pengeluaran
-            .card-body.py-4
-              - @plan.lines.each do |line|
-                .form-group.row.my-2
-                  label.col-5.col-form-label #{line.shopping_list.name}
-                  .col-7.my-auto
-                    span.form-control-plaintext.font-weight-bolder
-                      = line.price.format
-
-            .card-body 
-              - @plan.invoices.each do |invoice|
-                .form-group.row.my-2
-                  label.col-5.col-form-label Invoice #{invoice.invoice_type}
-                  .col-7.my-auto
-                    span.form-control-plaintext.font-weight-bolder
-                      = invoice.price.format
+        - @plan.lines.each do |line| 
+          .col-12.col-md-4
+            .card.card-custom.gutter-b.card-stretch.card-border-radius-25.card-shadow
+              .card-header.card-border-radius-25[
+                style="background-color: #{line.overbudget? ? '#FF4A4F' : '#5DF677'}"
+              ]
+                .card-title
+                  | #{line.shopping_list.name}
+              .card-body.text-center.pt-4
+                .d-flex
+                .my-2
+                  a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Budget: #{line.price.format}
+                .my-2
+                  a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Realisasi: #{line.price_realization.format}
+                / - line.invoice_realization.each do |invoice|
+                /   .my-2
+                /     a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 #{invoice.price.format}
 
 = render "add_invoice", invoice: @invoice

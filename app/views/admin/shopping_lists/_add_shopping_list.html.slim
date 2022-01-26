@@ -1,0 +1,29 @@
+#add.modal.fade[
+  aria-hidden="true"
+  aria-labelledby="staticBackdrop"
+  data-backdrop="static"
+  role="dialog"
+  tabindex="-1"
+]
+  .modal-dialog.modal-md role="document"
+    .modal-content
+      = form_with model: list, url: admin_shopping_lists_path, method: :post do |f|
+        .modal-header
+          h5#exampleModalLabel.modal-title Create New Shopping Lists
+          button.close aria-label="Close" data-dismiss="modal" type="button"
+            i.ki.ki-close aria-hidden="true"
+        .modal-body
+          .form-group.row
+            .col-lg-2.col-form-label.text-lg-right
+              strong Name:
+            .col-lg-10
+              = f.text_field :name, class: "form-control",
+              placeholder: "Name", autocomplete: "off", required: true
+            
+        .modal-footer
+          a.btn.btn-light-danger.font-weight-bold[
+            href="#{root_path}"
+            data-dismiss="modal"
+            type="button"
+          ] Cancel
+          = f.submit "Save", class: "btn btn-light-success font-weight-bold"

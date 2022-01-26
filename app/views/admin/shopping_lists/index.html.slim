@@ -1,0 +1,38 @@
+#kt_content.content.d-flex.flex-column.flex-column-fluid
+  #kt_subheader.subheader.py-2.py-lg-4.subheader-solid
+    .container-fluid.d-flex.align-items-center.justify-content-between.flex-wrap.flex-sm-nowrap
+      .d-flex.align-items-center.flex-wrap.mr-2
+        h5.text-dark.font-weight-bold.mt-2.mb-2.mr-2 Invoice
+      .d-flex.justify-content-end 
+        button.btn.btn-primary.font-weight-bolder.mr-2.my-1[
+          data-target="#add"
+          data-toggle="modal"
+          type="button"
+        ]
+          i.la.la-plus
+          | New List
+
+  .d-flex.flex-column-fluid
+    .container
+      .row 
+        .col-12
+          .card.card-custom
+            .card-header
+              .card-title
+                span.card-icon
+                  i.flaticon2-favourite.text-primary
+                h3.card-label Shopping List Categories
+              .card-toolbar.font-weight-bolder
+                = @total_categories
+            .card-body
+              css:
+                .datatable.datatable-default.datatable-loaded > .datatable-table {
+                  overflow-x: scroll;
+                  width: 100%;
+                }
+              #kt_datatable.datatable.datatable-bordered.datatable-head-custom[
+                data-admin--shopping-lists--index-data-path=("#{api_admin_shopping_lists_index_path}")
+                data-controller="admin--shopping-lists--index"
+              ]
+            
+= render "add_shopping_list", list: @new_list

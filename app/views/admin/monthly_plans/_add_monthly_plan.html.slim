@@ -5,7 +5,9 @@
   role="dialog"
   tabindex="-1"
 ]
-  .modal-dialog.modal-xl role="document"
+  #addModal.modal-dialog.modal-xl[
+    role="document"
+  ]
     .modal-content
       = form_with model: monthly_plan, url: admin_monthly_plans_path, method: :post do |f|
         .modal-header
@@ -23,7 +25,7 @@
             .col-lg-3.col-form-label
               strong Income
             .col-lg-9
-              = f.text_field :price, class: "form-control", data: { controller: "input-price" },
+              = f.text_field :price, class: "form-control js-nominal-checker-value-idr", data: { controller: "input-price" },
               placeholder: "Income", autocomplete: "off", required: true
           div[
             data-controller='dynamic-input'
@@ -41,6 +43,7 @@
             - if !monthly_plan.lines.present?
               .js-item-container-for-rates[
                 data-target="dynamic-input.element"
+                data-controller="admin--monthly-plans--price-checker"
               ]
                 .row
                   #shoppingListDiv.col-6.form-group
@@ -55,7 +58,7 @@
                       }
                   #priceDiv.col-5.form-group
                     = text_field_tag 'monthly_plan_lines[0][price]', "",
-                      class: 'form-control',
+                      class: 'form-control js-nominal',
                       required: true,
                       data: {\
                         target: 'dynamic-input.input',\
@@ -64,7 +67,7 @@
                   .col-sm-1
                     button.btn.btn-danger[
                       type='button'
-                      data-action='click->dynamic-input#remove'
+                      data-action='click->dynamic-input#remove click->admin--monthly-plans--price-checker#handleRemove'
                     ]
                       i.fas.fa-trash
               .form-group.row.d-block.text-center.mt-2
@@ -77,4 +80,4 @@
             data-dismiss="modal"
             type="button"
           ] Cancel
-          = f.submit "Save", class: "btn btn-light-success font-weight-bold"
+          = f.submit "Save", class: "btn btn-light-success font-weight-bold js-submit-button"

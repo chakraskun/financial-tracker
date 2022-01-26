@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :projects
     resources :invoices
     resources :monthly_plans
+    resources :shopping_lists
     get 'ajax_dropdown_name/:invoice_type',
       to: 'invoices#ajax_dropdown_name',
       as: :dropdown_name_list
@@ -32,6 +33,9 @@ Rails.application.routes.draw do
       namespace :invoices do
         post 'get-income', to: 'index_income#show', as: 'index_income'
         post 'get-expense', to: 'index_expense#show', as: 'index_expense'
+      end
+      namespace :shopping_lists do
+        post 'get-all', to: 'index#show', as: :index
       end
     end
   end

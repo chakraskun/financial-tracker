@@ -1,0 +1,22 @@
+.modal-dialog.modal-lg role="document"
+  .modal-content
+    .modal-header
+      h5#exampleModalLabel.modal-title Create New Shopping Lists
+      button.close aria-label="Close" data-dismiss="modal" type="button"
+        i.ki.ki-close aria-hidden="true"
+    .modal-body
+      css:
+        .datatable.datatable-default.datatable-loaded > .datatable-table {
+          overflow-x: scroll;
+          width: 100%;
+        }
+      #kt_datatable.datatable.datatable-bordered.datatable-head-custom[
+        data-admin--monthly-plan-lines--index-data-path=("#{api_admin_monthly_plan_lines_index_path(id: line.monthly_plan.id, shopping_list_id: line.shopping_list_id)}")
+        data-controller="admin--monthly-plan-lines--index"
+      ]
+    .modal-footer
+      a.btn.btn-light-danger.font-weight-bold[
+        href="#{root_path}"
+        data-dismiss="modal"
+        type="button"
+      ] Cancel

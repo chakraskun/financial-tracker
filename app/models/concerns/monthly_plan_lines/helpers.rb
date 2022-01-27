@@ -13,7 +13,7 @@ module MonthlyPlanLines
 
     def price_realization
       return @price_realization if @price_realization.present?
-      @price_realization = Invoice.where(shopping_list_id: self.shopping_list_id).sum(&:price).to_money
+      @price_realization = Invoice.where(shopping_list_id: self.shopping_list_id, monthly_plan_id: self.monthly_plan_id).sum(&:price).to_money
     end
     
     def invoice_realization

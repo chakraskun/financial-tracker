@@ -37,6 +37,9 @@ Rails.application.routes.draw do
       namespace :shopping_lists do
         post 'get-all', to: 'index#show', as: :index
       end
+      namespace :monthly_plan_lines do
+        post 'get-all/:id/:shopping_list_id', to: 'index#show', as: :index
+      end
     end
   end
 

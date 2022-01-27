@@ -22,7 +22,12 @@
                 .card-title
                   | #{plan.month}
                 .card-toolbar 
-                  button.btn.btn-danger.btn-sm.btn-icon.btn-shadow.btn-hover-danger
+                  a.btn.btn-danger.btn-sm.btn-icon.btn-shadow.btn-hover-danger[
+                    href="#{admin_monthly_plan_path(plan)}"
+                    data-method="delete"
+                    data-confirm="Are you sure?"
+                    type="button"
+                  ]
                     i.la.la-trash
               .card-body.text-center.pt-4
                 .d-flex

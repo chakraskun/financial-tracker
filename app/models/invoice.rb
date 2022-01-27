@@ -3,6 +3,9 @@ class Invoice
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  belongs_to :monthly_plan
+  belongs_to :shopping_list
+
   field :invoice_type, type: String
   field :description, type: String
   field :user_id, type: String

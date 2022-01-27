@@ -40,7 +40,7 @@
               .col-5.form-group.mb-1.d-flex.justify-content-center
                 label.col-form-label
                   strong Nominal
-            - if !monthly_plan.lines.present?
+            - if !monthly_plan.monthly_plan_lines.present?
               .js-item-container-for-rates[
                 data-target="dynamic-input.element"
                 data-controller="admin--monthly-plans--price-checker"

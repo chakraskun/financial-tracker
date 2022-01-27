@@ -27,12 +27,12 @@ module Admin
     end
 
     def destroy
-      if !invoice.destroy
-        flash[:danger] = "Failed to delete invoice. #{shipper.errors.full_messages.to_sentence}"
-        return redirect_to admin_invoices_path
+      if !monthly_plan.destroy
+        flash[:danger] = "Failed to delete Monthly Plans. #{monthly_plan.errors.full_messages.to_sentence}"
+        return redirect_to admin_monthly_plans_path
       end
-      redirect_to admin_invoices_path,
-        flash: { success: 'Success delete Invoice' }
+      redirect_to admin_monthly_plans_path,
+        flash: { success: 'Success delete Monthly Plans' }
     end
 
     def ajax_dropdown_name

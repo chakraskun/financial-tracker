@@ -17,7 +17,7 @@
   .d-flex.flex-column-fluid
     .container
       .row
-        - @plan.lines.each do |line| 
+        - @plan.monthly_plan_lines.each do |line| 
           .col-12.col-md-4
             .card.card-custom.gutter-b.card-stretch.card-border-radius-25.card-shadow
               .card-header.card-border-radius-25[
@@ -28,9 +28,27 @@
               .card-body.text-center.pt-4
                 .d-flex
                 .my-2
-                  a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Budget: #{line.price.format}
+                  a.text-dark.font-weight-bold.text-hover-primary.font-size-h3
+                    | Budget: #{line.price.format}
                 .my-2
-                  a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 Realisasi: #{line.price_realization.format}
+                  a.text-dark.font-weight-bold.text-hover-primary.font-size-h3
+                    | Realisasi: #{line.price_realization.format}
+                .my-2 
+                  a.button.btn.btn-info.font-weight-bold.btn-sm[
+                    type="button"
+                    data-controller="modal-popper"
+                    data-target="#modal-show-#{line.shopping_list_id}"
+                  ]
+                    | See Details
+                  .modal.fade[
+                    tabindex="-1" 
+                    role="dialog" 
+                    aria-labelledby="exampleModalLabel" 
+                    aria-hidden="true" 
+                    data-focus-on="input:first"
+                    id="modal-show-#{line.shopping_list_id}"
+                  ]
+                    = render partial: "modal_monthly_plan_realization", locals: {line: line}
                 / - line.invoice_realization.each do |invoice|
                 /   .my-2
                 /     a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 #{invoice.price.format}

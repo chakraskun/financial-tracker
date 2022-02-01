@@ -16,7 +16,6 @@ module Invoices
             :id,
             :invoice_type,
             :description,
-            :user_id,
             :price,
             :date,
             :monthly_plan_id,

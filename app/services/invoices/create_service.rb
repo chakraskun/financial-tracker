@@ -3,9 +3,6 @@
 module Invoices
   class CreateService < ::Invoices::BaseService
     def action
-      
-      binding.pry
-      
       invoice.user_id = @current_user
       invoice.save!
     end

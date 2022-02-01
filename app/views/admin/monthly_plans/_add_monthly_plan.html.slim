@@ -34,10 +34,13 @@
             class='form-group'
           ]
             .row
-              .col-6.form-group.mb-1.d-flex.justify-content-center
+              .col-3.form-group.mb-1.d-flex.justify-content-center
                 label.col-form-label[for="example-email"]
-                  strong List Belanja
-              .col-5.form-group.mb-1.d-flex.justify-content-center
+                  strong Category
+              .col-4.form-group.mb-1.d-flex.justify-content-center
+                label.col-form-label[for="example-email"]
+                  strong Description
+              .col-4.form-group.mb-1.d-flex.justify-content-center
                 label.col-form-label
                   strong Nominal
             - if !monthly_plan.monthly_plan_lines.present?
@@ -46,7 +49,7 @@
                 data-controller="admin--monthly-plans--price-checker"
               ]
                 .row
-                  #shoppingListDiv.col-6.form-group
+                  #shoppingListDiv.col-3.form-group
                     = select_tag 'monthly_plan_lines[0][shopping_list_id]',
                       options_for_select(monthly_plan.shopping_list_selection_list),
                       include_blank: '== Pilih ==',
@@ -56,7 +59,14 @@
                         target: 'dynamic-input.input',\
                         controller: 'id-generator select2'\
                       }
-                  #priceDiv.col-5.form-group
+                  #descriptionDiv.col-4.form-group
+                    = text_field_tag 'monthly_plan_lines[0][description]', "",
+                      class: 'form-control',
+                      required: true,
+                      data: {\
+                        target: 'dynamic-input.input',\
+                      }
+                  #priceDiv.col-4.form-group
                     = text_field_tag 'monthly_plan_lines[0][price]', "",
                       class: 'form-control js-nominal',
                       required: true,

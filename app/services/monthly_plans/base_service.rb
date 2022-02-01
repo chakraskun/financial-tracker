@@ -23,6 +23,7 @@ module MonthlyPlans
           monthly_plan_lines: [
             :id,
             :shopping_list_id,
+            :desctiption,
             :price,
             :monthly_plan_id
           ]

@@ -10,6 +10,7 @@ module Admin
     end
 
     def show
+      @new_invoice = Invoice.new
     end
 
     def edit; end

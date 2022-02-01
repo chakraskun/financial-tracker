@@ -25,6 +25,22 @@ module MonthlyPlanLines
       return false if self.price_realization < self.price
       return true
     end
+
+    def remaining_budget
+      return @remaining_budget if @remaining_budget.present?
+      @remaing_budget = self.price - self.price_realization
+    end
+    
+    def colorization
+      if price_realization >= price
+        return 'red'
+      elsif price_realization/price >= 0.5
+        return 'yellow'
+      else
+        return 'green'
+      end
+    end
+    
     
   end
 end

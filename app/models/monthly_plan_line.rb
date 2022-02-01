@@ -8,6 +8,7 @@ class MonthlyPlanLine
 
   field :shopping_list_id, type: String
   field :price, type: Money
+  field :description, type: String
   field :monthly_plan_id, type: String
   
   validates :price, presence: true

@@ -21,10 +21,19 @@
           .col-12.col-md-4
             .card.card-custom.gutter-b.card-stretch.card-border-radius-25.card-shadow
               .card-header.card-border-radius-25[
-                style="background-color: #{line.overbudget? ? '#FF4A4F' : '#5DF677'}"
+                style="background-color: #{line.colorization}"
               ]
                 .card-title
                   | #{line.shopping_list.name}
+                .card-toolbar 
+                  a.btn.btn-light-primary.btn-shadow.font-weight-bolder[
+                    data-target="#add-#{line.id}"
+                    data-toggle="modal"
+                    type="button"
+                  ]
+                    i.la.la-plus
+                    | Invoice
+                  = render "add_invoice", invoice: @new_invoice, line: line
               .card-body.text-center.pt-4
                 .d-flex
                 .my-2
@@ -33,6 +42,9 @@
                 .my-2
                   a.text-dark.font-weight-bold.text-hover-primary.font-size-h3
                     | Realisasi: #{line.price_realization.format}
+                .my-2
+                  a.font-weight-bold.text-hover-primary.font-size-h1
+                    | Sisa: #{line.remaining_budget.format}
                 .my-2 
                   a.button.btn.btn-info.font-weight-bold.btn-sm[
                     type="button"
@@ -52,5 +64,3 @@
                 / - line.invoice_realization.each do |invoice|
                 /   .my-2
                 /     a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 #{invoice.price.format}
-
-= render "add_invoice", invoice: @invoice

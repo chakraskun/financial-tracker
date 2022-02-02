@@ -2,8 +2,9 @@ class Invoice
   include Userable
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Paperclip
 
-  has_one_attached :proof_of_transaction
+  has_mongoid_attached_file :proof_of_transaction
   belongs_to :monthly_plan
   belongs_to :shopping_list
 

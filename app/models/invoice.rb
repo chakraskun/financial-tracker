@@ -3,6 +3,7 @@ class Invoice
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  has_one_attached :proof_of_transaction
   belongs_to :monthly_plan
   belongs_to :shopping_list
 

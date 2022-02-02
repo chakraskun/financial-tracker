@@ -12,16 +12,17 @@ export default class extends Controller {
 
     $(this.element).DataTable(
       {
-        "iDisplayLength": 10,
+        "iDisplayLength": 5,
         "paging": true,
         "ordering": true,
         "bInfo" : false ,
         "bLengthChange" : false,
         "scrollX": true,
-        "autoWidth": false,
         "bInfo" : false,
+        "autoWidth": true,
         "responsive" : true,
-        "dom": '<"row"<"col-md-12"ifl>>rt<"row"<"col-md-2 mx-auto"p>><"clear">'
+        "searching": false,
+        "dom": '<"row"<"col-md-12"ifl>>rt<"row"<"col-12 d-flex justify-content-end"p>><"clear">'
       }
     )
   }

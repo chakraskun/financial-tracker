@@ -23,6 +23,7 @@ gem 'rolify'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'mongoid'
+gem 'google_drive'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 

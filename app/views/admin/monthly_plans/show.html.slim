@@ -18,7 +18,9 @@
     .container
       .row
         - @plan.monthly_plan_lines.each do |line| 
-          .col-12.col-md-4
+          .col-12[
+            id="card-body-#{line.id}"
+          ]
             .card.card-custom.gutter-b.card-stretch.card-border-radius-25.card-shadow
               .card-header.card-border-radius-25[
                 style="background-color: #{line.colorization}"
@@ -45,22 +47,37 @@
                 .my-2
                   a.font-weight-bold.text-hover-primary.font-size-h1
                     | Sisa: #{line.remaining_budget.format}
-                .my-2 
-                  a.button.btn.btn-info.font-weight-bold.btn-sm[
-                    type="button"
-                    data-controller="modal-popper"
-                    data-target="#modal-show-#{line.shopping_list_id}"
+              #accordionDetail.accordion.accordion-toggle-arrow
+                .card
+                  #headingOne4.card-header
+                    .card-title[
+                      data-toggle="collapse"
+                      data-target="#details-#{line.id}"
+                    ]
+                      i.flaticon2-layers-1
+                      |  Detail Invoice
+                  .collapse.hide[
+                    data-parent="#accordionDetail"
+                    id="details-#{line.id}"
                   ]
-                    | See Details
-                  .modal.fade[
-                    tabindex="-1" 
-                    role="dialog" 
-                    aria-labelledby="exampleModalLabel" 
-                    aria-hidden="true" 
-                    data-focus-on="input:first"
-                    id="modal-show-#{line.shopping_list_id}"
-                  ]
-                    = render partial: "modal_monthly_plan_realization", locals: {line: line}
-                / - line.invoice_realization.each do |invoice|
-                /   .my-2
-                /     a.text-dark.font-weight-bold.text-hover-primary.font-size-h3 #{invoice.price.format}
+                    .card-body
+                      table.text-center.table-bordered.table.table-head-custom.table-head-bg.table-vertical-center[
+                        
+                      ]
+                        thead#hourly_table
+                          tr.text-uppercase
+                            th No.
+                            th Description
+                            th Date
+                            th Price
+                        tbody.js-billing-meter-table
+                          - line.invoices.each_with_index do |invoice, i|
+                            tr.text-dark
+                              td#no.text-center
+                                | #{i + 1}
+                              td#description
+                                | #{invoice.description}
+                              td#date
+                                | #{readable_date_2(invoice.date)}
+                              td#price
+                                | #{invoice.price.format}

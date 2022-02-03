@@ -2,9 +2,9 @@ class Invoice
   include Userable
   include Mongoid::Document
   include Mongoid::Timestamps
-  # include Mongoid::Paperclip
+  include Mongoid::Paperclip
 
-  # has_mongoid_attached_file :proof_of_transaction
+  has_mongoid_attached_file :proof_of_transaction
   belongs_to :monthly_plan
   belongs_to :shopping_list
 
@@ -21,5 +21,5 @@ class Invoice
   validates :date, presence: true
   validates :monthly_plan_id, presence: true
   validates :invoice_type, :inclusion => { :in => ["income", "expense"] }
-  # validates_attachment :proof_of_transaction, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  validates_attachment :proof_of_transaction, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 end

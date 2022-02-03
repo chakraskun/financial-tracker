@@ -24,7 +24,7 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'mongoid'
 gem 'google_drive'
-# gem "mongoid-paperclip"
+gem "mongoid-paperclip"
 
 gem 'bootsnap', '>= 1.4.4', require: false
 

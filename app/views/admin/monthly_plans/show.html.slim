@@ -70,6 +70,7 @@
                             th Description
                             th Date
                             th Price
+                            th Proof
                         tbody.js-billing-meter-table
                           - line.invoices.each_with_index do |invoice, i|
                             tr.text-dark
@@ -81,3 +82,5 @@
                                 | #{readable_date_2(invoice.date)}
                               td#price
                                 | #{invoice.price.format}
+                              td#file
+                                = invoice.proof_of_transaction.present? ? link_to(invoice.proof_of_transaction.url, invoice.proof_of_transaction.url, target: '_blank') : ''

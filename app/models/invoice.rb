@@ -21,4 +21,5 @@ class Invoice
   validates :date, presence: true
   validates :monthly_plan_id, presence: true
   validates :invoice_type, :inclusion => { :in => ["income", "expense"] }
+  validates_attachment :proof_of_transaction, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 end

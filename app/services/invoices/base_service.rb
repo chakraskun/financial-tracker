@@ -19,7 +19,8 @@ module Invoices
             :price,
             :date,
             :monthly_plan_id,
-            :shopping_list_id
+            :shopping_list_id,
+            :proof_of_transaction
           )
       end
   end

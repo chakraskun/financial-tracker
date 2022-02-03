@@ -14,34 +14,6 @@
           button.close aria-label="Close" data-dismiss="modal" type="button"
             i.ki.ki-close aria-hidden="true"
         .modal-body
-          / .form-group.row 
-          /   .col-lg-4.col-form-label.text-lg-right
-          /     strong Type:
-          /   .col-lg-8.pt-3
-          /     .radio-inline
-          /       label.radio.radio-info
-          /         input[
-          /           data-controller="admin--invoices--dropdown-name-changer"
-          /           data-admin--invoices--dropdown-name-changer-path="#{admin_dropdown_name_list_path(invoice_type: "-1")}"
-          /           data-action="change->admin--invoices--dropdown-name-changer#handleChangeInput"
-          /           name="invoice[invoice_type]"
-          /           type="radio"
-          /           value='expense'
-          /           checked=true
-          /         ]
-          /         span
-          /         | Expense
-          /       label.radio.radio-info
-          /         input[
-          /           data-controller="admin--invoices--dropdown-name-changer"
-          /           data-admin--invoices--dropdown-name-changer-path="#{admin_dropdown_name_list_path(invoice_type: "-1")}"
-          /           data-action="change->admin--invoices--dropdown-name-changer#handleChangeInput"
-          /           name="invoice[invoice_type]"
-          /           type="radio"
-          /           value='income'
-          /         ]
-          /         span
-          /         | Income
           .form-group.row
             .col-lg-4.col-form-label.text-lg-right
               strong Bulan:
@@ -70,8 +42,13 @@
             .col-lg-4.col-form-label.text-lg-right
               strong Description:
             .col-lg-8
-              = f.text_field :description, class: "form-control",
-              placeholder: "Description", autocomplete: "off", required: true
+              = f.text_field :description, class: "form-control"
+          .form-group.row
+            .col-lg-4.col-form-label.text-lg-right
+              strong Proof of Transaction
+            .col-lg-8
+              = f.file_field :proof_of_transaction, class: "form-control",
+              placeholder: "Proof of Transaction", autocomplete: "off", required: true
               = f.hidden_field :monthly_plan_id, value: line.monthly_plan.id
               = f.hidden_field :invoice_type, value: "expense"
               = f.hidden_field :shopping_list_id, value: line.shopping_list_id

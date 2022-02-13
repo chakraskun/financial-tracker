@@ -1,9 +1,11 @@
 class Invoice
   include Userable
+  include Invoices::Attachable
   include Mongoid::Document
   include Mongoid::Timestamps
 
   # has_mongoid_attached_file :proof_of_transaction
+  has_one :invoice_attachment
   belongs_to :monthly_plan
   belongs_to :shopping_list
 
@@ -14,6 +16,7 @@ class Invoice
   field :date, :type => DateTime
   field :monthly_plan_id, type: String
   field :shopping_list_id, type: String
+  field :invoice_attachment_id, type: String
 
   validates :price, presence: true
   validates :user_id, presence: true

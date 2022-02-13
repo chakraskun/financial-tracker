@@ -9,6 +9,7 @@ module Invoices
         invoice_attachment.file_name = invoice_attachment_params['proof_of_transaction'].original_filename
         invoice_attachment.save!
       end
+      invoice.invoice_attachment_id = invoice_attachment.id
       invoice.save!
     end
 

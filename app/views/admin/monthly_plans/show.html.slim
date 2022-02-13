@@ -82,5 +82,7 @@
                                 | #{readable_date_2(invoice.date)}
                               td#price
                                 | #{invoice.price.format}
-                              / td#file
-                              /   = invoice.proof_of_transaction.present? ? link_to(invoice.proof_of_transaction.url, invoice.proof_of_transaction.url, target: '_blank') : ''
+                              td#file
+                                = link_to(invoice.attachment, target: '_blank', class: 'btn btn-sm') do
+                                  i.flaticon2-download
+                                end

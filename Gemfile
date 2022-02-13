@@ -27,8 +27,6 @@ gem 'google_drive'
 gem "aws-sdk-s3", require: false
 gem 'image_processing'
 gem 'mini_magick'
-gem 'dotenv-rails', groups: [:development, :test]
-
 
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -55,3 +53,4 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'tzinfo'
+gem 'dotenv-rails', groups: [:development, :test]

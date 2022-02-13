@@ -24,7 +24,10 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'mongoid'
 gem 'google_drive'
-gem "mongoid-paperclip"
+gem "aws-sdk-s3", require: false
+gem 'image_processing'
+gem 'mini_magick'
+
 
 gem 'bootsnap', '>= 1.4.4', require: false
 

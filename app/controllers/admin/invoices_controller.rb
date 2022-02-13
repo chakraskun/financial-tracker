@@ -20,7 +20,7 @@ module Admin
         current_user.id
       )
       if !service.run
-        return redirect_to admin_invoices_path,
+        return redirect_to admin_monthly_plan_path(id: service.invoice.monthly_plan_id),
           alert: "Failed to create invoice, #{service.error_messages.to_sentence}"
       end
       redirect_to admin_monthly_plan_path(id: service.invoice.monthly_plan_id), notice: "Invoice has been created"

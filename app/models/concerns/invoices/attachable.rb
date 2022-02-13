@@ -3,7 +3,8 @@ module Invoices
   
     def attachment
       InvoiceAttachment
-        .find_by(id: self.invoice_attachment_id)
+        .where(id: self.invoice_attachment_id)
+        .first
         .proof_of_transaction
     end
   end 

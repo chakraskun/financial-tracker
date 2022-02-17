@@ -82,5 +82,10 @@
                                 | #{readable_date_2(invoice.date)}
                               td#price
                                 | #{invoice.price.format}
-                              / td#file
-                              /   = link_to(invoice.attachment, invoice.attachment, target: '_blank', class: 'btn btn-primary btn-sm')
+                              td#file
+                                button.btn.btn-sm.btn-light-primary[
+                                  href="#{invoice.attachment.service_url}"
+                                  target="_blank"
+                                ] 
+                                  i.flaticon2-download
+                                  | Download

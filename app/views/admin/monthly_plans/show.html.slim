@@ -83,9 +83,10 @@
                               td#price
                                 | #{invoice.price.format}
                               td#file
-                                button.btn.btn-sm.btn-light-primary[
-                                  href="#{invoice.attachment.service_url}"
-                                  target="_blank"
-                                ] 
-                                  i.flaticon2-download
-                                  | Download
+                                - if invoice.attachment.present?
+                                  button.btn.btn-sm.btn-light-primary[
+                                    href="#{invoice.attachment.service_url}"
+                                    target="_blank"
+                                  ] 
+                                    i.flaticon2-download
+                                    | Download

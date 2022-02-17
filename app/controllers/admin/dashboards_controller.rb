@@ -3,9 +3,19 @@
 module Admin
   class DashboardsController < Admin::ApplicationController
     def index
-      @total_expense = Invoice.where(invoice_type: 'expense').sum('price.cents').to_money
-      @total_income = Invoice.where(invoice_type: 'income').sum('price.cents').to_money
-      @current_balance = @total_income - @total_expense
+      current_month = Date.current.strftime('%B %Y')
+      current_monthly_plan_id = MonthlyPlan.find_by(month: current_month).id
+      expenses = Invoice.where(monthly_plan_id: current_monthly_plan_id)
+
+      @calendar_expense = []
+      expenses.map do |expense|
+        y = {
+          'title': expense.price.format,
+          'start': expense.date.to_date,
+          'description': expense.description
+        }
+        @calendar_expense << y
+      end
     end
   end
 end

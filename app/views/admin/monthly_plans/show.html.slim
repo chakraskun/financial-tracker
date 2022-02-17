@@ -81,12 +81,7 @@
                               td#date
                                 | #{readable_date_2(invoice.date)}
                               td#price
-                                | #{invoice.price.format}
+                                | #{invoice.price.format}``
                               td#file
                                 - if invoice.attachment.present?
-                                  button.btn.btn-sm.btn-light-primary[
-                                    href="#{invoice.attachment.service_url}"
-                                    target="_blank"
-                                  ] 
-                                    i.flaticon2-download
-                                    | Download
+                                  = link_to 'Bukti Transaksi', invoice.attachment.service_url, class:"btn btn-sm btn-light-info font-weight-bolder", target: "_blank"

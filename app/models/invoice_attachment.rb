@@ -1,5 +1,5 @@
 class InvoiceAttachment < ApplicationRecord
-  has_one_attached :proof_of_transaction, service: :s3
+  has_one_attached :proof_of_transaction, service: :amazon
 
   validate :acceptable_image
 

@@ -17,6 +17,7 @@ class Invoice
   field :monthly_plan_id, type: String
   field :shopping_list_id, type: String
   field :invoice_attachment_id, type: String
+  filed :attachment_link, type: String
 
   validates :price, presence: true
   validates :user_id, presence: true

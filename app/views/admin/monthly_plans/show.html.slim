@@ -81,7 +81,9 @@
                               td#date
                                 | #{readable_date_2(invoice.date)}
                               td#price
-                                | #{invoice.price.format}``
+                                | #{invoice.price.format}
                               td#file
+                                - if invoice.attachment_link.present?
+                                  = link_to 'Bukti Transaksi', invoice.attachment_link class:"btn btn-sm btn-light-info font-weight-bolder", target: "_blank"
                                 - if invoice.attachment.present?
                                   = link_to 'Bukti Transaksi', invoice.attachment.service_url, class:"btn btn-sm btn-light-info font-weight-bolder", target: "_blank"

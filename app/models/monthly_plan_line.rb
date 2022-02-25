@@ -4,7 +4,7 @@ class MonthlyPlanLine
   include Mongoid::Timestamps
 
   belongs_to :monthly_plan
-  belongs_to :shopping_lists
+  belongs_to :shopping_list
 
   field :shopping_list_id, type: String
   field :price, type: Money

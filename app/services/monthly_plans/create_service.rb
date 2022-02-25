@@ -5,6 +5,7 @@ module MonthlyPlans
 
     def action
       monthly.user_id = @current_user
+      monthly.save!
       if monthly_lines_params.present?
         monthly_lines_params.each do |i,line_params|
           plan_line = MonthlyPlanLine.new(line_params)
@@ -12,7 +13,6 @@ module MonthlyPlans
           plan_line.save!
         end
       end
-      monthly.save!
     end
 
     def monthly
